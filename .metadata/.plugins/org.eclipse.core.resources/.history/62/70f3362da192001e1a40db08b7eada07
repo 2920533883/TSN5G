@@ -1,0 +1,78 @@
+//package tsn5g.simulations;
+import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
+import inet.networklayer.ipv4.RoutingTableRecorder;
+import simu5g.common.binder.Binder;
+import simu5g.world.radio.LteChannelControl;
+import simu5g.common.carrierAggregation.CarrierAggregation;
+import simu5g.nodes.Upf;
+import simu5g.nodes.NR.gNodeB;
+import simu5g.nodes.NR.NRUe;
+import inet.node.tsn.*;
+
+import inet.node.ethernet.Eth10M;
+import inet.node.inet.Router;
+import inet.node.inet.StandardHost;
+import inet.networks.base.TsnNetworkBase;
+
+network TSN5G extends TsnNetworkBase
+{
+    parameters:
+        *.eth[*].bitrate = default(10Mbps);
+        @display("bgb=1747.6351,932.99255");
+    submodules:
+        carrierAggregation: CarrierAggregation {
+            @display("p=1479.2579,399.09598");
+        }
+        channelControl: LteChannelControl {
+            @display("p=1477.812,52.056;is=s");
+        }
+        routingRecorder: RoutingTableRecorder {
+            @display("p=1479.2579,187.98;is=s");
+        }
+        binder: Binder {
+            @display("p=1479.2579,294.98398;is=s");
+        }
+        tsnServer: MyTsnDevice {
+            @display("p=1015.092,99.773994");
+        }
+        router: Router {
+            **.eth.typename = "EthernetInterface";
+            @display("p=718.25,398.84");
+        }
+        //        tsnClock: TsnClock {
+        //
+        //            @display("p=733.122,108.45");
+        //        }
+        tsnSwitch: MyTsnSwitch {
+            @display("p=921.05,212.93999");
+        }
+        upf: Upf {
+            @display("p=897.48755,499.0425");
+        }
+        gnb: gNodeB {
+            @display("p=897.48755,745.60504;is=vl");
+        }
+        tsnDevice: MyTsnDevice {
+//            ipv4.forwarding = true;
+            @display("p=295.87503,863.955");
+        }
+        ue: TsnUe {
+            
+            @display("p=478.27,801.06");
+        }
+        tt: TsnUe2 {
+            tt.localPort = 12340;
+            tt.destPort = 3088;
+            tt.destAddress = "tsnDevice";
+            @display("p=897.38995,351.52");
+        }
+    connections:
+        tsnDevice.ethg++ <--> Eth10M <--> ue.phys;
+
+        //        tsnSwitch.ethg++ <--> Eth10M <--> tsnClock.ethg++;
+        tsnSwitch.ethg++ <--> Eth10M <--> tsnServer.ethg++;
+        tt.pppg++ <--> Eth10M <--> upf.filterGate;
+        //        router.ethg++ <--> Eth10M <--> tt.ethg++;
+        tt.phys <--> tsnSwitch.ethg++;
+        upf.pppg++ <--> Eth10M <--> gnb.ppp;
+}

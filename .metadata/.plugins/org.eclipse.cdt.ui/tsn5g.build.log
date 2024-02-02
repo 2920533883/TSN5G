@@ -1,0 +1,28 @@
+11:48:20 **** Incremental Build of configuration release for project tsn5g ****
+make MODE=release all 
+cd src && make
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/tsn5g/src'
+TSN5GTranslator.cc
+TSN5GTranslator.cc:16:1: error: cannot cast 'TSN5GTranslator' to its private base class 'omnetpp::cModule'
+Define_Module(TSN5GTranslator);
+^
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:136:35: note: expanded from macro 'Define_Module'
+#define Define_Module(CLASSNAME)  __REGISTER_CLASS(CLASSNAME, omnetpp::cModule, "module")
+                                  ^
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:148:3: note: expanded from macro '__REGISTER_CLASS'
+  __REGISTER_CLASS_X(CLASSNAME, BASECLASS, DESC, /*nothing*/ )
+  ^
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:152:88: note: expanded from macro '__REGISTER_CLASS_X'
+  static omnetpp::cObject *MAKE_UNIQUE_WITHIN_FILE(__factoryfunc_)() {BASECLASS *ret = new CLASSNAME; return ret; } \
+                                                                                       ^
+TSN5GTranslator.cc:7:25: note: constrained by implicitly private inheritance here
+class TSN5GTranslator : cSimpleModule{
+                        ^~~~~~~~~~~~~
+1 error generated.
+make[1]: *** [Makefile:113: ../out/clang-release/src/TSN5GTranslator.o] Error 1
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/tsn5g/src'
+make: *** [Makefile:2: all] Error 2
+"make MODE=release all" terminated with exit code 2. Build might be incomplete.
+
+11:48:21 Build Failed. 3 errors, 0 warnings. (took 1s.822ms)
+

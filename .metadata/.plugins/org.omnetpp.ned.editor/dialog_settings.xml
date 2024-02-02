@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ViewerSettings">
+		<item key="inet.node.tsn.TsnSwitch:scale" value="0.45516616"/>
+		<item key="TSN5G:scale" value="0.591716"/>
+		<item key="MyTsnSwitch:scale" value="0.591716"/>
+		<item key="train_topology.TrainTopology:scale" value="1.0"/>
+	</section>
+</section>

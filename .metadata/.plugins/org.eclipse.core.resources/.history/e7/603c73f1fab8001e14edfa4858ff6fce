@@ -1,0 +1,33 @@
+[General]
+network = TrainTopology
+*.*.macCellId = 0
+*.*.masterId = 0
+*.*.nrMacCellId = 1
+*.*.nrMasterId = 1
+**.dynamicCellAssociation = true
+**.enableHandover = true
+
+*.gnb*.numX2Apps = 1                                        # one x2App per peering node
+*.gnb*.x2App[*].server.localPort = 5000 + ancestorIndex(1)  # Server ports (x2App[0]=5000, x2App[1]=5001, ...)
+*.gnb1.x2App[0].client.connectAddress = "gnb2%x2ppp0" 
+*.gnb2.x2App[0].client.connectAddress = "gnb1%x2ppp0" 
+
+*.nwtt*.ppp.interfaceTableModule = ""
+*.*.dstt.destAddress = "server"
+*.Client*.numApps = 2
+*.Client*.app[*].typename = "UdpSourceApp"
+*.Client*.app[0].display-name = "besteffort"
+*.Client*.app[1].display-name = "video"
+*.Client*.app[*].io.destAddress = "server"
+*.Client*.app[0].io.destPort = 1000
+*.Client*.app[1].io.destPort = 1001
+*.Client*.app[*].source.packetLength = 70B
+*.Client*.app[0].source.productionInterval = 10ms
+*.Client*.app[1].source.productionInterval = 30ms
+*.Client*.app[*].source.initialProductionOffset = uniform(50ms,100ms)
+*.tsnServer.numApps = 2
+*.tsnServer.app[*].typename = "UdpSinkApp"
+*.tsnServer.app[0].display-name = "besteffort"
+*.tsnServer.app[1].display-name = "video"
+*.tsnServer.app[0].io.localPort = 1000
+*.tsnServer.app[1].io.localPort = 1001

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;test/train_topology/Server.mrt&apos; to &apos;switch.mrt&apos;" description="Rename resource &apos;Server.mrt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="train_topology/Server.mrt" name="switch.mrt" stamp="1706368015955" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;test/train_topology/switch.mrt&apos; to &apos;server.mrt&apos;" description="Rename resource &apos;switch.mrt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="train_topology/switch.mrt" name="server.mrt" stamp="1706368103789" updateReferences="true"/>
+</session>

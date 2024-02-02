@@ -1,0 +1,4 @@
+out/clang-release//train_topology/a.o: train_topology/a.cc \
+  /home/simu5g/omnetpp-6.0/include/omnetpp.h
+
+/home/simu5g/omnetpp-6.0/include/omnetpp.h:

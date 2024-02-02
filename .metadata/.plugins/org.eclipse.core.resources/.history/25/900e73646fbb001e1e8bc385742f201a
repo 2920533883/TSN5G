@@ -1,0 +1,81 @@
+version 3
+run General-0-20240125-11:48:45-2381
+attr configname General
+attr datetime 20240125-11:48:45
+attr datetimef 20240125-114845
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TrainTopology
+attr processid 2381
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images:../../simu5G/images
+config network TrainTopology
+config cmdenv-express-mode false
+config cmdenv-output-file run.log
+config *.gnb*.numX2Apps 1
+config *.gnb*.x2App[*].server.localPort "5000 + ancestorIndex(1)"
+config *.gnb1.x2App[0].client.connectAddress "\"gnb2%x2ppp0\""
+config *.gnb2.x2App[0].client.connectAddress "\"gnb1%x2ppp0\""
+config *.*.dstt.destAddress "\"server\""
+config *.*Ue[0].masterId 0
+config *.*Ue[0].nrMacCellId 1
+config *.*Ue[0].nrMasterId 1
+config *.*Ue[1].masterId 0
+config *.*Ue[1].nrMacCellId 1
+config *.*Ue[1].nrMasterId 1
+config *.*Ue[2].masterId 0
+config *.*Ue[2].nrMacCellId 1
+config *.*Ue[2].nrMasterId 2
+config *.*Ue[3].masterId 0
+config *.*Ue[3].nrMacCellId 1
+config *.*Ue[3].nrMasterId 2
+config *.Client*.numApps 2
+config *.Client*.app[*].typename UdpSourceApp
+config *.Client*.app[0].display-name besteffort
+config *.Client*.app[1].display-name video
+config *.Client*.app[*].io.destAddress "\"server\""
+config *.Client*.app[0].io.destPort 1000
+config *.Client*.app[1].io.destPort 1001
+config *.Client*.app[0].source.packetLength 30B
+config *.Client*.app[1].source.packetLength 40B
+config *.Client*.app[0].source.productionInterval 100ms
+config *.Client*.app[1].source.productionInterval 200ms
+config *.Client*.app[*].source.initialProductionOffset uniform(0ms,300ms)
+config *.server.numApps 2
+config *.server.app[*].typename UdpSinkApp
+config *.server.app[0].display-name besteffort
+config *.server.app[1].display-name video
+config *.server.app[0].io.localPort 1000
+config *.server.app[1].io.localPort 1001
+config *.Client*.hasOutgoingStreams true
+config *.server.hasIncomingStreams true
+config *.Client*.bridging.streamIdentifier.identifier.mapping "[{stream: \"besteffort\", packetFilter: expr(udp.destPort == 1000)},\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{stream: \"video\", packetFilter: expr(udp.destPort == 1001)}]"
+config *.Client*.bridging.streamCoder.encoder.mapping "[{stream: \"besteffort\", pcp: 0},\n\t\t\t\t\t\t\t\t\t\t\t\t\t{stream: \"video\", pcp: 4}]"
+config *.switch*.bridging.streamCoder.decoder.mapping "[{pcp: 0, stream: \"besteffort\"},\n                                                 {pcp: 4, stream: \"video\"}]"
+config *.switch*.bridging.streamCoder.encoder.mapping "[{stream: \"besteffort\", pcp: 0},\n\t\t\t\t\t\t\t\t\t\t\t\t\t{stream: \"video\", pcp: 4}]"
+config *.switch*.hasIngressTrafficFiltering true
+config *.switch*.bridging.streamFilter.ingress.typename SimpleIeee8021qFilter
+config *.switch*.bridging.streamFilter.ingress.numStreams 2
+config *.switch*.bridging.streamFilter.ingress.classifier.mapping "{besteffort: 0, video: 1}"
+config *.switch*.bridging.streamFilter.ingress.*[0].display-name besteffort
+config *.switch*.bridging.streamFilter.ingress.*[1].display-name video
+config *.switch*.bridging.streamFilter.ingress.meter[*].typename EligibilityTimeMeter
+config *.switch*.bridging.streamFilter.ingress.meter[*].committedInformationRate 20Mbps
+config *.switch*.bridging.streamFilter.ingress.meter[*].committedBurstSize 10kB
+config *.switch*.bridging.streamFilter.ingress.filter[*].typename EligibilityTimeFilter
+config *.switch*.hasEgressTrafficShaping true
+config *.switch*.bridging.directionReverser.reverser.excludeEncapsulationProtocols "[\"ieee8021qctag\"]"
+config *.switch*.eth[*].macLayer.queue.numTrafficClasses 2
+config *.switch*.eth[*].macLayer.queue.*[0].display-name besteffort
+config *.switch*.eth[*].macLayer.queue.*[1].display-name video
+config *.switch*.eth[*].macLayer.queue.queue[0].typename EligibilityTimeQueue
+config *.switch*.eth[*].macLayer.queue.queue[1].typename EligibilityTimeQueue
+config *.switch*.eth[*].macLayer.queue.transmissionSelectionAlgorith

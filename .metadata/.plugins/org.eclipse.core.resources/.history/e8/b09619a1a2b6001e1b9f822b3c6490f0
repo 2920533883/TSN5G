@@ -1,0 +1,144 @@
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see http://www.gnu.org/licenses/.
+// 
+
+package train_topology;
+import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
+import inet.networklayer.ipv4.RoutingTableRecorder;
+import simu5g.common.binder.Binder;
+import simu5g.world.radio.LteChannelControl;
+import simu5g.common.carrierAggregation.CarrierAggregation;
+import simu5g.nodes.Upf;
+import simu5g.nodes.NR.gNodeB;
+import simu5g.nodes.NR.NRUe;
+import inet.node.tsn.*;
+import inet.node.ethernet.*;
+import inet.node.inet.Router;
+import inet.node.inet.StandardHost;
+import inet.networks.base.TsnNetworkBase;
+import *;
+network TrainTopology extends TsnNetworkBase
+{
+    parameters:
+        int numHVAC = 4;
+        int numFAS = 4;
+        int numPIS = 4;
+        int numTCU = 4;
+        int numBCU = 4;
+        int numBC = 4;
+        *.eth[*].bitrate = default(100Mbps);
+        @display("bgi=background/train;bgb=4315.567,1647.9696");
+    submodules:
+        carrierAggregation: CarrierAggregation {
+            @display("p=100,27;is=s");
+        }
+        channelControl: LteChannelControl {
+            @display("p=196,27;is=s");
+        }
+        routingRecorder: RoutingTableRecorder {
+            @display("p=176,88;is=s");
+        }
+        binder: Binder {
+            @display("p=176,200;is=s");
+        }
+        server: TsnDevice {
+            @display("p=1924,48");
+        }
+        switch1: TsnSwitch {
+            @display("p=1420,146");
+        }
+        switch2: TsnSwitch {
+            @display("p=1724,146");
+        }
+        switch3: TsnSwitch {
+            @display("p=1586,47");
+        }
+        upf: Upf {
+            @display("p=1420,337;is=s");
+        }
+        gnb1: gNodeB {
+            @display("p=808,392");
+        }
+
+        gnb2: gNodeB {
+            @display("p=2013,392");
+        }
+        ClientHVAC[numHVAC]: TsnDevice {
+            @display("i=device/card;p=350,600,r,600;is=s;");
+        }
+        HVACUe[numHVAC]: TsnUe {
+            @display("i=device/card;p=350,600,r,600;is=s;");
+        }
+        ClientFAS[numFAS]: TsnDevice {
+            @display("i=device/card;p=350,700,r,600;is=s;");
+        }
+        FASUe[numFAS]: TsnUe {
+            @display("i=device/card;p=350,700,r,600;is=s;");
+        }
+        ClientPIS[numPIS]: TsnDevice {
+            @display("i=device/terminal;p=350,800,r,600;is=s;");
+        }
+        PISUe[numPIS]: TsnUe {
+            @display("i=device/terminal;p=350,800,r,600;is=s;");
+        }
+        ClientTCU[numTCU]: TsnDevice {
+            @display("i=device/card;p=450,400,r,600;is=s;");
+        }
+        TCUUe[numTCU]: TsnUe {
+            @display("i=device/card;p=450,400,r,600;is=s;");
+        }
+        ClientBCU[numBCU]: TsnDevice {
+            @display("i=device/device;p=450,500,r,600;is=s;");
+        }
+        BCUUe[numBCU]: TsnUe {
+            @display("i=device/device;p=450,500,r,600;is=s;");
+        }
+        ClientBC[numBC]: TsnDevice {
+            @display("i=device/hub;p=500,600,r,600;is=s;");
+        }
+        BCUe[numBC]: TsnUe {
+            @display("i=device/hub;p=500,600,r,600;is=s;");
+        }
+        nwtt1: NWTT {
+            @display("p=1420,269;is=s");
+        }
+    connections:
+        for i=0..numHVAC-1 {
+            ClientHVAC[i].ethg++ <--> Eth100M <--> HVACUe[i].phys;
+        }
+        for i=0..numFAS-1 {
+            ClientFAS[i].ethg++ <--> Eth100M <--> FASUe[i].phys;
+        }
+        for i=0..numPIS-1 {
+            ClientPIS[i].ethg++ <--> Eth100M <--> PISUe[i].phys;
+        }
+        for i=0..numTCU-1 {
+            ClientTCU[i].ethg++ <--> Eth100M <--> TCUUe[i].phys;
+        }
+        for i=0..numBCU-1 {
+            ClientBCU[i].ethg++ <--> Eth100M <--> BCUUe[i].phys;
+        }
+        for i=0..numBC-1 {
+            ClientBC[i].ethg++ <--> Eth100M <--> BCUe[i].phys;
+        }
+        switch1.ethg++  <--> switch3.ethg++;
+        switch1.ethg++ <--> switch2.ethg++;
+        switch3.ethg++  <--> switch2.ethg++;
+        nwtt1.pppg  <--> upf.filterGate;
+        nwtt1.phys  <--> switch1.ethg++;
+        upf.pppg++  <--> gnb1.ppp;
+        upf.pppg++  <--> gnb2.ppp;
+        switch3.ethg++  <--> server.ethg++;
+
+}

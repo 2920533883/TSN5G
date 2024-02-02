@@ -1,0 +1,128 @@
+04:40:35 **** Build of configuration release for project 5GTSN ****
+make MODE=release all 
+cd src && make
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/5GTSN/src'
+translator.cc
+In file included from translator.cc:16:
+./translator.h:20:27: error: unknown class name 'cSimpleModule'; did you mean 'omnetpp::cSimpleModule'?
+class translator : public cSimpleModule{
+                          ^~~~~~~~~~~~~
+                          omnetpp::cSimpleModule
+/home/simu5g/omnetpp-6.0/include/omnetpp/csimplemodule.h:202:15: note: 'omnetpp::cSimpleModule' declared here
+class SIM_API cSimpleModule : public cModule //implies noncopyable
+              ^
+In file included from translator.cc:16:
+./translator.h:25:40: error: unknown type name 'cMessage'; did you mean 'omnetpp::cMessage'?
+            virtual void handleChannel(cMessage *msg, int pcpVal);
+                                       ^~~~~~~~
+                                       omnetpp::cMessage
+/home/simu5g/omnetpp-6.0/include/omnetpp/envirext.h:33:7: note: 'omnetpp::cMessage' declared here
+class cMessage;
+      ^
+In file included from translator.cc:16:
+./translator.h:27:40: error: unknown type name 'cMessage'; did you mean 'omnetpp::cMessage'?
+            virtual void handleMessage(cMessage *msg) override;
+                                       ^~~~~~~~
+                                       omnetpp::cMessage
+/home/simu5g/omnetpp-6.0/include/omnetpp/envirext.h:33:7: note: 'omnetpp::cMessage' declared here
+class cMessage;
+      ^
+In file included from translator.cc:16:
+./translator.h:28:32: error: unknown type name 'cMessage'; did you mean 'omnetpp::cMessage'?
+            virtual int getPCP(cMessage *msg);
+                               ^~~~~~~~
+                               omnetpp::cMessage
+/home/simu5g/omnetpp-6.0/include/omnetpp/envirext.h:33:7: note: 'omnetpp::cMessage' declared here
+class cMessage;
+      ^
+In file included from translator.cc:16:
+./translator.h:31:9: error: unknown type name 'cXMLElement'; did you mean 'omnetpp::cXMLElement'?
+        cXMLElement* QoSPar;
+        ^~~~~~~~~~~
+        omnetpp::cXMLElement
+/home/simu5g/omnetpp-6.0/include/omnetpp/cxmlelement.h:75:15: note: 'omnetpp::cXMLElement' declared here
+class SIM_API cXMLElement : public cObject, noncopyable
+              ^
+translator.cc:21:15: error: unknown type name 'Translator'; did you mean 'translator'?
+Define_Module(Translator);
+              ^~~~~~~~~~
+              translator
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:136:52: note: expanded from macro 'Define_Module'
+#define Define_Module(CLASSNAME)  __REGISTER_CLASS(CLASSNAME, omnetpp::cModule, "module")
+                                                   ^
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:148:22: note: expanded from macro '__REGISTER_CLASS'
+  __REGISTER_CLASS_X(CLASSNAME, BASECLASS, DESC, /*nothing*/ )
+                     ^
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:152:92: note: expanded from macro '__REGISTER_CLASS_X'
+  static omnetpp::cObject *MAKE_UNIQUE_WITHIN_FILE(__factoryfunc_)() {BASECLASS *ret = new CLASSNAME; return ret; } \
+                                                                                           ^
+./translator.h:20:7: note: 'translator' declared here
+class translator : public cSimpleModule{
+      ^
+translator.cc:21:15: error: unknown type name 'Translator'; did you mean 'translator'?
+Define_Module(Translator);
+              ^~~~~~~~~~
+              translator
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:136:52: note: expanded from macro 'Define_Module'
+#define Define_Module(CLASSNAME)  __REGISTER_CLASS(CLASSNAME, omnetpp::cModule, "module")
+                                                   ^
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:148:22: note: expanded from macro '__REGISTER_CLASS'
+  __REGISTER_CLASS_X(CLASSNAME, BASECLASS, DESC, /*nothing*/ )
+                     ^
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:153:104: note: expanded from macro '__REGISTER_CLASS_X'
+  static void *MAKE_UNIQUE_WITHIN_FILE(__castfunc_)(omnetpp::cObject *obj) {return (void*)dynamic_cast<CLASSNAME*>(obj);} \
+                                                                                                       ^
+./translator.h:20:7: note: 'translator' declared here
+class translator : public cSimpleModule{
+      ^
+translator.cc:21:15: error: unknown type name 'Translator'; did you mean 'translator'?
+Define_Module(Translator);
+              ^~~~~~~~~~
+              translator
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:136:52: note: expanded from macro 'Define_Module'
+#define Define_Module(CLASSNAME)  __REGISTER_CLASS(CLASSNAME, omnetpp::cModule, "module")
+                                                   ^
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:148:22: note: expanded from macro '__REGISTER_CLASS'
+  __REGISTER_CLASS_X(CLASSNAME, BASECLASS, DESC, /*nothing*/ )
+                     ^
+/home/simu5g/omnetpp-6.0/include/omnetpp/regmacros.h:154:125: note: expanded from macro '__REGISTER_CLASS_X'
+  EXECUTE_ON_STARTUP(omnetpp::internal::classes.getInstance()->add(new omnetpp::cObjectFactory(omnetpp::opp_typename(typeid(CLASSNAME)), MAKE_UNIQUE_WITHIN_FILE(__factoryfunc_), MAKE_UNIQUE_WITHIN_FILE(__castfunc_), DESC)); EXTRACODE; )
+                                                                                                                            ^
+/home/simu5g/omnetpp-6.0/include/omnetpp/onstartup.h:54:30: note: expanded from macro 'EXECUTE_ON_STARTUP'
+    void __ONSTARTUP_FUNC() {CODE;} \
+                             ^
+./translator.h:20:7: note: 'translator' declared here
+class translator : public cSimpleModule{
+      ^
+translator.cc:32:6: error: use of undeclared identifier 'Translator'; did you mean 'translator'?
+void Translator::handleMessage(cMessage *msg)
+     ^~~~~~~~~~
+     translator
+./translator.h:20:7: note: 'translator' declared here
+class translator : public cSimpleModule{
+      ^
+translator.cc:35:5: error: unknown type name 'Packet'; did you mean 'cPacket'?
+    Packet* packet = check_and_cast<Packet*>(msg);
+    ^~~~~~
+    cPacket
+/home/simu5g/omnetpp-6.0/include/omnetpp/cpacket.h:52:15: note: 'cPacket' declared here
+class SIM_API cPacket : public cMessage
+              ^
+translator.cc:35:37: error: use of undeclared identifier 'Packet'; did you mean 'packet'?
+    Packet* packet = check_and_cast<Packet*>(msg);
+                                    ^~~~~~
+                                    packet
+translator.cc:35:13: note: 'packet' declared here
+    Packet* packet = check_and_cast<Packet*>(msg);
+            ^
+translator.cc:35:44: error: expected expression
+    Packet* packet = check_and_cast<Packet*>(msg);
+                                           ^
+12 errors generated.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/5GTSN/src'
+make[1]: *** [Makefile:115: ../out/clang-release/src/translator.o] Error 1
+make: *** [Makefile:2: all] Error 2
+"make MODE=release all" terminated with exit code 2. Build might be incomplete.
+
+04:40:40 Build Failed. 14 errors, 0 warnings. (took 4s.993ms)
+

@@ -1,0 +1,503 @@
+file 21258 1706258772                                           
+version 3
+run General-0-20240126-09:46:05-9897
+attr configname General
+attr datetime 20240126-09:46:05
+attr datetimef 20240126-094605
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TrainTopology
+attr processid 9897
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images:../../simu5G/images
+config network TrainTopology
+config *.configurator.config "xmldoc(\"./NetworkConfig.xml\")"
+config *.*.dstt.networkconfig "xmldoc(\"./NetworkConfig.xml\")"
+config *.gnb*.numX2Apps 1
+config *.gnb*.x2App[*].server.localPort "5000 + ancestorIndex(1)"
+config *.gnb1.x2App[0].client.connectAddress "\"gnb2%x2ppp0\""
+config *.gnb2.x2App[0].client.connectAddress "\"gnb1%x2ppp0\""
+config *.*.dstt.destAddress "\"server\""
+config *.*Ue[0].masterId 0
+config *.*Ue[0].nrMacCellId 1
+config *.*Ue[0].nrMasterId 1
+config *.*Ue[1].masterId 0
+config *.*Ue[1].nrMacCellId 1
+config *.*Ue[1].nrMasterId 1
+config *.*Ue[2].masterId 0
+config *.*Ue[2].nrMacCellId 1
+config *.*Ue[2].nrMasterId 2
+config *.*Ue[3].masterId 0
+config *.*Ue[3].nrMacCellId 1
+config *.*Ue[3].nrMasterId 2
+config *.*Client*.numApps 2
+config *.*Client*.app[*].typename UdpSourceApp
+config *.*Client*.app[0].display-name besteffort
+config *.*Client*.app[1].display-name video
+config *.*Client*.app[*].io.destAddress "\"server\""
+config *.*Client*.app[0].io.destPort 1000
+config *.*Client*.app[1].io.destPort 1001
+config *.*Client*.app[0].source.packetLength 30B
+config *.*Client*.app[1].source.packetLength 40B
+config *.*Client*.app[0].source.productionInterval 10ms
+config *.*Client*.app[1].source.productionInterval 20ms
+config *.*Client*.app[*].source.initialProductionOffset uniform(100ms,400ms)
+config *.server.numApps 2
+config *.server.app[*].typename UdpSinkApp
+config *.server.app[0].display-name besteffort
+config *.server.app[1].display-name video
+config *.server.app[0].io.localPort 1000
+config *.server.app[1].io.localPort 1001
+config *.*Client*.hasOutgoingStreams true
+config *.server.hasIncomingStreams true
+config *.*Client*.bridging.streamIdentifier.identifier.mapping "[{stream: \"besteffort\", packetFilter: expr(udp.destPort == 1000)},\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{stream: \"video\", packetFilter: expr(udp.destPort == 1001)}]"
+config *.*Client*.bridging.streamCoder.encoder.mapping "[{stream: \"besteffort\", pcp: 0},\n\t\t\t\t\t\t\t\t\t\t\t\t\t{stream: \"video\", pcp: 4}]"
+config *.switch*.bridging.streamCoder.decoder.mapping "[{pcp: 0, stream: \"besteffort\"},\n                                                 {pcp: 4, stream: \"video\"}]"
+config *.switch*.bridging.streamCoder.encoder.mapping "[{stream: \"besteffort\", pcp: 0},\n\t\t\t\t\t\t\t\t\t\t\t\t\t{stream: \"video\", pcp: 4}]"
+config *.switch*.hasIngressTrafficFiltering true
+config *.switch*.bridging.streamFilter.ingress.typename SimpleIeee8021qFilter
+config *.switch*.bridging.streamFilter.ingress.numStreams 2
+config *.switch*.bridging.streamFilter.ingress.classifier.mapping "{besteffort: 0, video: 1}"
+config *.switch*.bridging.streamFilter.ingress.*[0].display-name besteffort
+config *.switch*.bridging.streamFilter.ingress.*[1].display-name video
+config *.switch*.bridging.streamFilter.ingress.meter[*].typename EligibilityTimeMeter
+config *.switch*.bridging.streamFilter.ingress.meter[*].committedInformationRate 20Mbps
+config *.switch*.bridging.streamFilter.ingress.meter[*].committedBurstSize 10kB
+config *.switch*.bridging.streamFilter.ingress.filter[*].typename EligibilityTimeFilter
+config *.switch*.hasEgressTrafficShaping true
+config *.switch*.bridging.directionReverser.reverser.excludeEncapsulationProtocols "[\"ieee8021qctag\"]"
+config *.switch*.eth[*].macLayer.queue.numTrafficClasses 2
+config *.switch*.eth[*].macLayer.queue.*[0].display-name besteffort
+config *.switch*.eth[*].macLayer.queue.*[1].display-name video
+config *.switch*.eth[*].macLayer.queue.queue[0].typename EligibilityTimeQueue
+config *.switch*.eth[*].macLayer.queue.queue[1].typename EligibilityTimeQueue
+config *.switch*.eth[*].macLayer.queue.transmissionSelectionAlgorithm[0].typename Ieee8021qAsynchronousShaper
+config *.switch*.eth[*].macLayer.queue.transmissionSelectionAlgorithm[0].idleSlope 42.68Mbps
+config *.switch*.eth[*].macLayer.queue.transmissionSelectionAlgorithm[1].typename Ieee8021qAsynchronousShaper
+config *.switch*.eth[*].macLayer.queue.transmissionSelectionAlgorithm[1].idleSlope 21.34Mbps
+config *.server.bridging.streamIdentifier.identifier.mapping "[{stream: \"besteffort\", packetFilter: expr(udp.destPort == 1025)},\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{stream: \"video\", packetFilter: expr(udp.destPort == 1026)}]"
+config *.server.bridging.streamCoder.encoder.mapping "[{stream: \"besteffort\", pcp: 0},\n\t\t\t\t\t\t\t\t\t\t\t\t\t{stream: \"video\", pcp: 4}]"
+
+vector 0 TrainTopology.server.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 1 TrainTopology.server.eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 2 TrainTopology.server.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 3 TrainTopology.server.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 4 TrainTopology.server.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 5 TrainTopology.switch1.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 6 TrainTopology.switch1.eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 7 TrainTopology.switch1.eth[1].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 8 TrainTopology.switch1.eth[1].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 9 TrainTopology.switch2.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 10 TrainTopology.switch2.eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 11 TrainTopology.switch2.eth[1].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 12 TrainTopology.switch2.eth[1].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 13 TrainTopology.switch3.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 14 TrainTopology.switch3.eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 15 TrainTopology.switch3.eth[1].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 16 TrainTopology.switch3.eth[1].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 17 TrainTopology.switch3.eth[2].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 18 TrainTopology.switch3.eth[2].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 19 TrainTopology.upf1.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 20 TrainTopology.upf1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 21 TrainTopology.upf1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 22 TrainTopology.upf1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 23 TrainTopology.upf2.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 24 TrainTopology.upf2.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 25 TrainTopology.upf2.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 26 TrainTopology.upf2.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 27 TrainTopology.gnb1.pppIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 28 TrainTopology.gnb1.x2ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 29 TrainTopology.gnb1.pppMEHostIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 30 TrainTopology.gnb1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 31 TrainTopology.gnb1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 32 TrainTopology.gnb1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 33 TrainTopology.gnb2.pppIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 34 TrainTopology.gnb2.x2ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 35 TrainTopology.gnb2.pppMEHostIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 36 TrainTopology.gnb2.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 37 TrainTopology.gnb2.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 38 TrainTopology.gnb2.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 39 TrainTopology.TCUClient[0].eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 40 TrainTopology.TCUClient[0].eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 41 TrainTopology.TCUClient[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 42 TrainTopology.TCUClient[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 43 TrainTopology.TCUClient[0].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 44 TrainTopology.TCUClient[1].eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 45 TrainTopology.TCUClient[1].eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 46 TrainTopology.TCUClient[1].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 47 TrainTopology.TCUClient[1].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 48 TrainTopology.TCUClient[1].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 49 TrainTopology.TCUClient[2].eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 50 TrainTopology.TCUClient[2].eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 51 TrainTopology.TCUClient[2].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 52 TrainTopology.TCUClient[2].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 53 TrainTopology.TCUClient[2].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 54 TrainTopology.TCUClient[3].eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 55 TrainTopology.TCUClient[3].eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 56 TrainTopology.TCUClient[3].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 57 TrainTopology.TCUClient[3].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 58 TrainTopology.TCUClient[3].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 59 TrainTopology.TCUUe[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 60 TrainTopology.TCUUe[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 61 TrainTopology.TCUUe[0].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 62 TrainTopology.TCUUe[1].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 63 TrainTopology.TCUUe[1].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 64 TrainTopology.TCUUe[1].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+0	20473 16 0 0 0 0 2 0 0 0 0
+1	20489 16 0 0 0 0 2 0 0 0 0
+2	20505 8 0 0 0 0 1 0 0 0 0
+3	20513 8 0 0 0 0 1 0 0 0 0
+4	20521 8 0 0 0 0 1 0 0 0 0
+5	20529 16 0 0 0 0 2 0 0 0 0
+6	20545 16 0 0 0 0 2 0 0 0 0
+7	20561 16 0 0 0 0 2 0 0 0 0
+8	20577 16 0 0 0 0 2 0 0 0 0
+9	20593 16 0 0 0 0 2 0 0 0 0
+10	20609 18 0 0 0 0 2 0 0 0 0
+11	20627 18 0 0 0 0 2 0 0 0 0
+12	20645 18 0 0 0 0 2 0 0 0 0
+13	20663 18 0 0 0 0 2 0 0 0 0
+14	20681 18 0 0 0 0 2 0 0 0 0
+15	20699 18 0 0 0 0 2 0 0 0 0
+16	20717 18 0 0 0 0 2 0 0 0 0
+17	20735 18 0 0 0 0 2 0 0 0 0
+18	20753 18 0 0 0 0 2 0 0 0 0
+19	20771 9 0 0 0 0 1 0 0 0 0
+20	20780 9 0 0 0 0 1 0 0 0 0
+21	20789 9 0 0 0 0 1 0 0 0 0
+22	20798 9 0 0 0 0 1 0 0 0 0
+23	20807 9 0 0 0 0 1 0 0 0 0
+24	20816 9 0 0 0 0 1 0 0 0 0
+25	20825 9 0 0 0 0 1 0 0 0 0
+26	20834 9 0 0 0 0 1 0 0 0 0
+27	20843 9 0 0 0 0 1 0 0 0 0
+28	20852 9 0 0 0 0 1 0 0 0 0
+29	20861 9 0 0 0 0 1 0 0 0 0
+30	20870 9 0 0 0 0 1 0 0 0 0
+31	20879 9 0 0 0 0 1 0 0 0 0
+32	20888 9 0 0 0 0 1 0 0 0 0
+33	20897 9 0 0 0 0 1 0 0 0 0
+34	20906 9 0 0 0 0 1 0 0 0 0
+35	20915 9 0 0 0 0 1 0 0 0 0
+36	20924 9 0 0 0 0 1 0 0 0 0
+37	20933 9 0 0 0 0 1 0 0 0 0
+38	20942 9 0 0 0 0 1 0 0 0 0
+39	20951 18 0 0 0 0 2 0 0 0 0
+40	20969 18 0 0 0 0 2 0 0 0 0
+41	20987 9 0 0 0 0 1 0 0 0 0
+42	20996 9 0 0 0 0 1 0 0 0 0
+43	21005 9 0 0 0 0 1 0 0 0 0
+44	21014 18 0 0 0 0 2 0 0 0 0
+45	21032 18 0 0 0 0 2 0 0 0 0
+46	21050 9 0 0 0 0 1 0 0 0 0
+47	21059 9 0 0 0 0 1 0 0 0 0
+48	21068 9 0 0 0 0 1 0 0 0 0
+49	21077 18 0 0 0 0 2 0 0 0 0
+50	21095 18 0 0 0 0 2 0 0 0 0
+51	21113 9 0 0 0 0 1 0 0 0 0
+52	21122 9 0 0 0 0 1 0 0 0 0
+53	21131 9 0 0 0 0 1 0 0 0 0
+54	21140 18 0 0 0 0 2 0 0 0 0
+55	21158 18 0 0 0 0 2 0 0 0 0
+56	21176 9 0 0 0 0 1 0 0 0 0
+57	21185 9 0 0 0 0 1 0 0 0 0
+58	21194 9 0 0 0 0 1 0 0 0 0
+59	21203 9 0 0 0 0 1 0 0 0 0
+60	21212 9 0 0 0 0 1 0 0 0 0
+61	21221 9 0 0 0 0 1 0 0 0 0
+62	21230 9 0 0 0 0 1 0 0 0 0
+63	21239 9 0 0 0 0 1 0 0 0 0
+64	21248 9 0 0 0 0 1 0 0 0 0
+

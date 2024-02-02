@@ -1,0 +1,15 @@
+04:40:27 **** Build of configuration gcc-release for project veins_inet ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/veins_inet/src'
+MSGC: veins_inet/VeinsInetSampleMessage.msg
+Error: cannot read ../../inet4.4/src/inet/common/INETDefs.msg
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/veins_inet/src'
+Error: cannot read ../../inet4.4/src/inet/common/Units.msg
+Error: cannot read ../../inet4.4/src/inet/common/packet/chunk/Chunk.msg
+opp_msgtool: error in 3 file(s)
+make[1]: *** [Makefile:137: veins_inet/VeinsInetSampleMessage_m.h] Error 1
+make: *** [Makefile:36: all] Error 2
+"make MODE=release all" terminated with exit code 2. Build might be incomplete.
+
+04:40:29 Build Failed. 5 errors, 0 warnings. (took 1s.664ms)
+
