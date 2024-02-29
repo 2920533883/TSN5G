@@ -51,7 +51,7 @@ void MyNWTT::handleMessage(cMessage *msg)
         auto eph = pkt->popAtFront<EthernetPhyHeader>();
         auto emh = pkt->popAtFront<EthernetMacHeader>();
         // TSN
-//        auto iteh = pkt->popAtFront<Ieee8021qTagEpdHeader>();
+        auto iteh = pkt->popAtFront<Ieee8021qTagEpdHeader>();
         auto iph = pkt->popAtFront<Ipv4Header>();
         string senderIpAddress = iph->getSrcAddress().str();
         ipMap[senderIpAddress] = gatewayIpAddress;
@@ -64,13 +64,12 @@ void MyNWTT::handleMessage(cMessage *msg)
         new_emh->setDest(new_mac);
         new_emh->setTypeOrLength(emh->getTypeOrLength());
         pkt->insertAtFront(iph);
-//        pkt->insertAtFront(iteh);
+        pkt->insertAtFront(iteh);
         pkt->insertAtFront(new_emh);
         pkt->insertAtFront(eph);
         pkt->addTagIfAbsent<PacketProtocolTag>()->setProtocol(&Protocol::ethernetPhy);
-        pkt->setName("besteffort");
-//        if (iteh->getPcp() == 0) pkt->setName("besteffort");
-//        if (iteh->getPcp() == 4) pkt->setName("video");
+        if (iteh->getPcp() == 0) pkt->setName("besteffort");
+        if (iteh->getPcp() == 4) pkt->setName("video");
         Signal *signal = new Signal(msg->getFullName(), msg->getKind(), pkt->getBitLength());
         signal->encapsulate(pkt);
         cGate *physOutGate = gate("phys$o");
@@ -84,12 +83,12 @@ void MyNWTT::handleMessage(cMessage *msg)
         auto eph = pkt->popAtFront<EthernetPhyHeader>();
         auto emh = pkt->popAtFront<EthernetMacHeader>();
         // TSN
-//        auto iteh = pkt->popAtFront<Ieee8021qTagEpdHeader>();
+        auto iteh = pkt->popAtFront<Ieee8021qTagEpdHeader>();
         auto iph = pkt->popAtFront<Ipv4Header>();
         auto uph = pkt->popAtFront<UdpHeader>();
         pkt->insertAtFront(uph);
         pkt->insertAtFront(iph);
-//        pkt->insertAtFront(iteh);
+        pkt->insertAtFront(iteh);
         pkt->insertAtFront(emh);
         pkt->insertAtFront(eph);
         const auto& new_uph = makeShared<UdpHeader>();
@@ -104,7 +103,10 @@ void MyNWTT::handleMessage(cMessage *msg)
         pkt->insertAtFront(new_uph);
         Ipv4Address& add = const_cast<Ipv4Address&>(iph->getDestAddress());
         Ipv4Address* new_add = new Ipv4Address(add);
-        if (ipMap.find(iph->getDestAddress().str()) == ipMap.end()) return ;
+        if (ipMap.find(iph->getDestAddress().str()) == ipMap.end()) {
+            EV << "zrf MyNWTT" << endl;
+            return ;
+        }
         char* destIpAddress = const_cast<char *>(ipMap[iph->getDestAddress().str()].c_str());
         new_add->set(destIpAddress);
         const auto& new_iph = makeShared<Ipv4Header>();

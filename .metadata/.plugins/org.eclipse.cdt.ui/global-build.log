@@ -24780,3 +24780,1627 @@ make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
 06:13:51 **** Incremental Build of configuration release for project test ****
 make MODE=release all 
 make: Nothing to be done for 'all'.
+02:44:11 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:44:19 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:44:22 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:19:03 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:19:11 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:19:13 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:25:51 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:25:55 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:25:58 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:34:28 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:34:31 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:34:33 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:35:10 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:35:14 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:35:17 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:41:45 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:41:50 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:41:52 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:45:48 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:45:55 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:45:57 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:54:42 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:54:48 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:54:50 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:00:25 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:00:29 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:00:32 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:02:15 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:02:30 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:02:35 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+MyNWTT.cc
+TSN5GTranslator.cc
+Creating executable: out/clang-release//test
+04:08:07 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:08:19 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:08:26 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:09:31 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:09:49 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:10:23 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:10:32 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:14:08 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:14:19 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:14:26 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+MyNWTT.cc
+TSN5GTranslator.cc
+Creating executable: out/clang-release//test
+04:17:34 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:17:44 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:17:49 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+MyNWTT.cc
+TSN5GTranslator.cc
+Creating executable: out/clang-release//test
+04:21:51 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:22:00 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:22:05 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+MyNWTT.cc
+Creating executable: out/clang-release//test
+04:22:45 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:22:54 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:22:58 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:56:56 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:57:03 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:57:05 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:59:08 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:59:11 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:59:13 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:47:49 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:47:53 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:47:55 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:51:08 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:51:13 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:51:15 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:52:17 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:52:20 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:52:22 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:07:48 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:07:54 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:07:56 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:09:04 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make: *** wait: No child processes.  Stop.
+make: *** Waiting for unfinished jobs....
+make: *** wait: No child processes.  Stop.
+Command canceled
+04:09:16 **** Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:09:19 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:09:21 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:15:06 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:15:10 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:15:12 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:16:00 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:16:03 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:16:05 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:18:11 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:18:16 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:18:17 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+08:16:03 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+08:16:07 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+08:16:09 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+08:17:10 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+08:17:13 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+08:17:15 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+08:39:16 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+08:39:20 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+08:39:21 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+08:42:15 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+08:42:18 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+08:42:20 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+08:43:03 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+08:43:07 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+08:43:09 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+08:44:51 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+08:44:54 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+08:44:56 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+09:19:35 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+09:19:43 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+09:19:46 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+09:22:25 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+09:22:29 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+09:22:31 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+09:27:56 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+09:29:07 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+09:29:10 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+09:29:12 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+09:30:06 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+09:30:09 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+09:30:11 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+09:30:48 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+09:30:51 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+09:30:53 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+09:34:36 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+09:34:40 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+09:34:42 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+09:55:20 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+09:55:27 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+09:55:29 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+09:56:34 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+09:56:42 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+09:56:46 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+10:04:26 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+10:04:30 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+10:04:31 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+10:06:39 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+10:06:43 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+10:06:45 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+10:07:31 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+10:07:36 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+10:07:38 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+10:09:32 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+10:09:37 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+10:09:38 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+10:11:07 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+10:11:14 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+10:11:16 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+10:14:35 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+10:14:42 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+10:14:44 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+10:19:18 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+10:19:22 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+10:19:23 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+10:22:57 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+10:23:01 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+10:32:54 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+10:32:58 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+10:33:00 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:32:59 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:33:05 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:33:07 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:34:06 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:34:09 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:34:11 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:39:06 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:39:09 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:39:11 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:42:05 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:42:09 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:42:10 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:53:49 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:53:53 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:53:54 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+MyNWTT.cc
+Creating executable: out/clang-release//test
+03:03:48 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:03:54 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:03:57 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:05:09 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:05:15 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:05:16 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:08:12 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:08:15 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:08:17 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:09:38 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:09:42 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:09:44 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:10:17 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:10:21 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:10:22 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:15:34 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:15:37 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:15:39 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:34:10 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:34:18 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:34:21 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:35:44 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:35:48 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:35:49 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:37:48 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:02:32 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:02:41 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:06:35 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:06:42 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:06:44 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:08:00 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:08:04 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:14:29 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:14:33 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:14:35 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:15:08 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:15:12 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:15:14 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:17:17 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:17:21 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:17:23 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:18:04 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:18:08 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:18:10 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+04:19:12 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+04:19:17 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+04:19:19 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:23:38 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:23:45 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:23:48 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:27:06 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:27:09 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:27:11 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+02:51:29 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+02:51:32 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+02:51:34 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:10:04 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:10:08 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:10:10 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:16:56 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:16:59 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:17:01 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:17:57 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:18:00 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:18:02 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:18:31 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:18:34 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:18:36 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:19:46 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:19:50 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:19:51 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:27:59 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:28:03 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:28:04 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:30:20 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:30:23 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:30:24 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:32:06 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:32:09 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:32:10 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:36:58 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:37:02 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:37:04 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+03:45:05 **** Incremental Build of configuration release for project inet4.5 ****
+make MODE=release -j2 all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+*** CCACHE not detected - using precompiled headers
+*** COMPILING with:
+clang++ -c  -O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -fopenmp -Wno-overloaded-virtual -include inet/common/precompiled_release.h -DOMNETPPLIBS_IMPORT -DINET_EXPORT -I. -I/home/simu5g/omnetpp-6.0/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++    -fuse-ld=lld -Wl,-rpath,/home/simu5g/omnetpp-6.0/lib -Wl,-rpath,/home/simu5g/omnetpp-6.0/tools/linux.x86_64/lib -Wl,-rpath,.  -Wl,--export-dynamic -L/home/simu5g/omnetpp-6.0/lib -fopenmp
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+03:45:08 **** Incremental Build of configuration gcc-release for project simu5G ****
+make MODE=release all 
+make[1]: Entering directory '/home/simu5g/simu5g-workspace/simu5G/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/simu5g/simu5g-workspace/simu5G/src'
+03:45:09 **** Incremental Build of configuration release for project test ****
+make MODE=release all 
+make: Nothing to be done for 'all'.

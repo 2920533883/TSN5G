@@ -1,9 +1,9 @@
-file 313276 1706370420                                          
+file 25523 1709023036                                           
 version 3
-run General-0-20240127-16:46:55-7631
+run General-0-20240227-09:34:46-3128
 attr configname General
-attr datetime 20240127-16:46:55
-attr datetimef 20240127-164655
+attr datetime 20240227-09:34:46
+attr datetimef 20240227-093446
 attr experiment General
 attr inifile TSN5GPLUS.ini
 attr iterationvars ""
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network TSN5GPLUS
-attr processid 7631
+attr processid 3128
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -19,6 +19,28 @@ attr runnumber 0
 attr seedset 0
 config image-path ../inet4.5/images:../simu5G/images
 config network TSN5GPLUS
+config *.*.hasTimeSynchronization true
+config *.tsnClock.gptp.masterPorts "[\"eth0\"]"
+config *.tsnSwitch.gptp.masterPorts "[\"eth1\", \"eth2\"]"
+config **.referenceClock "\"tsnClock.clock\""
+config *.visualizer.typename IntegratedMultiCanvasVisualizer
+config *.visualizer.infoVisualizer[*].displayInfos true
+config *.visualizer.dataLinkVisualizer[0].displayLinks true
+config *.visualizer.dataLinkVisualizer[0].activityLevel "\"protocol\""
+config *.visualizer.dataLinkVisualizer[0].packetFilter "\"GptpSync\""
+config *.visualizer.dataLinkVisualizer[0].lineColor "\"blue2\""
+config *.visualizer.numInfoVisualizers 4
+config *.visualizer.infoVisualizer[0].modules "\"*.tsnClock.clock\""
+config *.tsnClock.clock.displayStringTextFormat "\"time: %T\""
+config *.visualizer.infoVisualizer[1].modules "\"*.tsnSwitch.clock\""
+config *.visualizer.infoVisualizer[1].placementHint "\"topLeft\""
+config *.visualizer.infoVisualizer[2].modules "\"*.tsnClient.clock\""
+config *.visualizer.infoVisualizer[2].placementHint "\"bottom\""
+config *.visualizer.infoVisualizer[3].modules "\"*.tsnServer.clock\""
+config *.visualizer.infoVisualizer[3].placementHint "\"bottom\""
+config *.tsnClient.clock.displayStringTextFormat "\"diff: %d\""
+config *.tsnServer.clock.displayStringTextFormat "\"diff: %d\""
+config *.tsnSwitch.clock.displayStringTextFormat "\"diff: %d\""
 config *.*.macCellId 1
 config *.*.masterId 1
 config *.*.nrMacCellId 1
@@ -121,118 +143,157 @@ attr recordingmode vector
 attr source "count(transmissionStarted) - count(transmissionEnded)"
 attr title "transmitting state"
 attr type int
-vector 9 TSN5GPLUS.upf.ppp[0].ppp transmissionState:vector ETV
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source transmissionStateChanged
-attr title "tx state"
-vector 10 TSN5GPLUS.upf.udp passedUpPk:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetSentToUpper
-attr title "packets passed up, count"
-vector 11 TSN5GPLUS.upf.udp droppedPkWrongPort:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-vector 12 TSN5GPLUS.upf.udp droppedPkBadChecksum:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-vector 13 TSN5GPLUS.gnb.pppIf.ppp transmissionState:vector ETV
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source transmissionStateChanged
-attr title "tx state"
-vector 14 TSN5GPLUS.gnb.pppMEHostIf.ppp transmissionState:vector ETV
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source transmissionStateChanged
-attr title "tx state"
-vector 15 TSN5GPLUS.gnb.udp passedUpPk:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetSentToUpper
-attr title "packets passed up, count"
-vector 16 TSN5GPLUS.gnb.udp droppedPkWrongPort:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-vector 17 TSN5GPLUS.gnb.udp droppedPkBadChecksum:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-vector 18 TSN5GPLUS.tsnClient.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+vector 9 TSN5GPLUS.tsnSwitch.eth[2].phyLayer.interFrameGapInserter interpacketGap:vector ETV
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
 attr title "interpacket gap state"
 attr type int
-vector 19 TSN5GPLUS.tsnClient.eth[0].phyLayer.transmitter transmitting:vector ETV
+vector 10 TSN5GPLUS.tsnSwitch.eth[2].phyLayer.transmitter transmitting:vector ETV
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source "count(transmissionStarted) - count(transmissionEnded)"
 attr title "transmitting state"
 attr type int
-vector 20 TSN5GPLUS.tsnClient.udp passedUpPk:vector(count) ETV
+vector 11 TSN5GPLUS.tsnClock.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 12 TSN5GPLUS.tsnClock.eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 13 TSN5GPLUS.tsnClock.udp passedUpPk:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetSentToUpper
 attr title "packets passed up, count"
-vector 21 TSN5GPLUS.tsnClient.udp droppedPkWrongPort:vector(count) ETV
+vector 14 TSN5GPLUS.tsnClock.udp droppedPkWrongPort:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetDropReasonIsNoPortFound(packetDropped)
 attr title "packets dropped (wrong port), count"
-vector 22 TSN5GPLUS.tsnClient.udp droppedPkBadChecksum:vector(count) ETV
+vector 15 TSN5GPLUS.tsnClock.udp droppedPkBadChecksum:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-vector 23 TSN5GPLUS.ue1.udp passedUpPk:vector(count) ETV
+vector 16 TSN5GPLUS.upf.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 17 TSN5GPLUS.upf.udp passedUpPk:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetSentToUpper
 attr title "packets passed up, count"
-vector 24 TSN5GPLUS.ue1.udp droppedPkWrongPort:vector(count) ETV
+vector 18 TSN5GPLUS.upf.udp droppedPkWrongPort:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetDropReasonIsNoPortFound(packetDropped)
 attr title "packets dropped (wrong port), count"
-vector 25 TSN5GPLUS.ue1.udp droppedPkBadChecksum:vector(count) ETV
+vector 19 TSN5GPLUS.upf.udp droppedPkBadChecksum:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-vector 26 TSN5GPLUS.ue1.cellularNic.phy servingCell:vector ETV
+vector 20 TSN5GPLUS.gnb.pppIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 21 TSN5GPLUS.gnb.pppMEHostIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 22 TSN5GPLUS.gnb.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 23 TSN5GPLUS.gnb.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 24 TSN5GPLUS.gnb.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 25 TSN5GPLUS.tsnClient.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
+attr title "interpacket gap state"
+attr type int
+vector 26 TSN5GPLUS.tsnClient.eth[0].phyLayer.transmitter transmitting:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "count(transmissionStarted) - count(transmissionEnded)"
+attr title "transmitting state"
+attr type int
+vector 27 TSN5GPLUS.tsnClient.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 28 TSN5GPLUS.tsnClient.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 29 TSN5GPLUS.tsnClient.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 30 TSN5GPLUS.ue1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 31 TSN5GPLUS.ue1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 32 TSN5GPLUS.ue1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 33 TSN5GPLUS.ue1.cellularNic.phy servingCell:vector ETV
 attr recordingmode vector
 attr source servingCell
 attr title "ID of the serving eNodeB for the UE"
 attr unit ""
-vector 27 TSN5GPLUS.ue1.cellularNic.nrPhy servingCell:vector ETV
+vector 34 TSN5GPLUS.ue1.cellularNic.nrPhy servingCell:vector ETV
 attr recordingmode vector
 attr source servingCell
 attr title "ID of the serving eNodeB for the UE"
 attr unit ""
-vector 28 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[0] numTokens:vector ETV
+vector 35 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[0] numTokens:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
 attr recordingmode vector
 attr source tokensChanged
 attr title "number of tokens"
 attr unit tk
-vector 29 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[1] numTokens:vector ETV
+vector 36 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[1] numTokens:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.video
 attr recordingmode vector
 attr source tokensChanged
 attr title "number of tokens"
 attr unit tk
-vector 30 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
+vector 37 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
@@ -240,14 +301,14 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 31 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
+vector 38 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
 attr recordingmode vector
 attr source remainingEligibilityTimeChanged
 attr title "remaining eligibility time"
 attr unit s
-vector 32 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
+vector 39 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
@@ -255,14 +316,14 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 33 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
+vector 40 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
 attr recordingmode vector
 attr source remainingEligibilityTimeChanged
 attr title "remaining eligibility time"
 attr unit s
-vector 34 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
+vector 41 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
@@ -270,14 +331,14 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 35 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
+vector 42 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
 attr recordingmode vector
 attr source remainingEligibilityTimeChanged
 attr title "remaining eligibility time"
 attr unit s
-vector 36 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
+vector 43 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
@@ -285,28 +346,66 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 37 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
+vector 44 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
 attr recordingmode vector
 attr source remainingEligibilityTimeChanged
 attr title "remaining eligibility time"
 attr unit s
-vector 38 TSN5GPLUS.tsnClient.app[0].source packetLengths:vector ETV
+vector 45 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
+attr enum CLOSED,OPEN
+attr interpolationmode sample-hold
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.besteffort
+attr recordingmode vector
+attr source gateStateChanged
+attr title "gate state"
+attr type enum
+vector 46 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.besteffort
+attr recordingmode vector
+attr source remainingEligibilityTimeChanged
+attr title "remaining eligibility time"
+attr unit s
+vector 47 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
+attr enum CLOSED,OPEN
+attr interpolationmode sample-hold
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.video
+attr recordingmode vector
+attr source gateStateChanged
+attr title "gate state"
+attr type enum
+vector 48 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.video
+attr recordingmode vector
+attr source remainingEligibilityTimeChanged
+attr title "remaining eligibility time"
+attr unit s
+vector 49 TSN5GPLUS.tsnClient.app[0].source packetLengths:vector ETV
 attr interpolationmode none
 attr moduledisplaypath TSN5GPLUS.tsnClient.besteffort.source
 attr recordingmode vector
 attr source packetLength(packetPushed)
 attr title "packet lengths"
 attr unit b
-vector 39 TSN5GPLUS.tsnClient.app[1].source packetLengths:vector ETV
+vector 50 TSN5GPLUS.tsnClient.app[1].source packetLengths:vector ETV
 attr interpolationmode none
 attr moduledisplaypath TSN5GPLUS.tsnClient.video.source
 attr recordingmode vector
 attr source packetLength(packetPushed)
 attr title "packet lengths"
 attr unit b
-vector 40 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[0] gateState:vector ETV
+vector 51 TSN5GPLUS.tsnServer.clock timeChanged:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr title "Clock time"
+vector 52 TSN5GPLUS.tsnSwitch.clock timeChanged:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr title "Clock time"
+vector 53 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
@@ -314,7 +413,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 41 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[1] gateState:vector ETV
+vector 54 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.video
@@ -322,7 +421,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 42 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] gateState:vector ETV
+vector 55 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
@@ -330,7 +429,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 43 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
+vector 56 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
 attr enum ON,OFF
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
@@ -338,7 +437,7 @@ attr recordingmode vector
 attr source guardBandStateChanged
 attr title "guard band state"
 attr type enum
-vector 44 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[1] gateState:vector ETV
+vector 57 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
@@ -346,7 +445,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 45 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
+vector 58 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
 attr enum ON,OFF
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
@@ -354,7 +453,7 @@ attr recordingmode vector
 attr source guardBandStateChanged
 attr title "guard band state"
 attr type enum
-vector 46 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] gateState:vector ETV
+vector 59 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
@@ -362,7 +461,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 47 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
+vector 60 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
 attr enum ON,OFF
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
@@ -370,7 +469,7 @@ attr recordingmode vector
 attr source guardBandStateChanged
 attr title "guard band state"
 attr type enum
-vector 48 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[1] gateState:vector ETV
+vector 61 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
@@ -378,7 +477,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 49 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
+vector 62 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
 attr enum ON,OFF
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
@@ -386,1953 +485,134 @@ attr recordingmode vector
 attr source guardBandStateChanged
 attr title "guard band state"
 attr type enum
-vector 50 TSN5GPLUS.tsnClient.app[0].io packetSent:vector(packetBytes) ETV
+vector 63 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionGate[0] gateState:vector ETV
+attr enum CLOSED,OPEN
+attr interpolationmode sample-hold
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.besteffort
+attr recordingmode vector
+attr source gateStateChanged
+attr title "gate state"
+attr type enum
+vector 64 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
+attr enum ON,OFF
+attr interpolationmode sample-hold
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.besteffort
+attr recordingmode vector
+attr source guardBandStateChanged
+attr title "guard band state"
+attr type enum
+vector 65 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionGate[1] gateState:vector ETV
+attr enum CLOSED,OPEN
+attr interpolationmode sample-hold
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.video
+attr recordingmode vector
+attr source gateStateChanged
+attr title "gate state"
+attr type enum
+vector 66 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
+attr enum ON,OFF
+attr interpolationmode sample-hold
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.video
+attr recordingmode vector
+attr source guardBandStateChanged
+attr title "guard band state"
+attr type enum
+vector 67 TSN5GPLUS.tsnClock.clock timeChanged:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr title "Clock time"
+vector 68 TSN5GPLUS.tsnClient.clock timeChanged:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr title "Clock time"
+vector 69 TSN5GPLUS.tsnClient.app[0].io packetSent:vector(packetBytes) ETV
 attr interpolationmode none
 attr moduledisplaypath TSN5GPLUS.tsnClient.besteffort.io
 attr recordingmode vector(packetBytes)
 attr source packetSent
 attr title "packets sent, packetBytes"
-vector 51 TSN5GPLUS.tsnClient.app[1].io packetSent:vector(packetBytes) ETV
+vector 70 TSN5GPLUS.tsnClient.app[1].io packetSent:vector(packetBytes) ETV
 attr interpolationmode none
 attr moduledisplaypath TSN5GPLUS.tsnClient.video.io
 attr recordingmode vector(packetBytes)
 attr source packetSent
 attr title "packets sent, packetBytes"
-vector 52 TSN5GPLUS.tsnClient.udp packetSent:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetSent
-attr title "packets sent, packetBytes"
-vector 53 TSN5GPLUS.tsnClient.bridging.streamIdentifier.identifier incomingPacketLengths:vector ETV
+vector 71 TSN5GPLUS.tsnServer.bridging.streamIdentifier.identifier incomingPacketLengths:vector ETV
 attr interpolationmode none
 attr recordingmode vector
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
 attr title "incoming packet lengths"
 attr unit b
-vector 54 TSN5GPLUS.tsnClient.bridging.streamIdentifier.identifier outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 55 TSN5GPLUS.tsnClient.bridging.streamCoder.encoder incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 56 TSN5GPLUS.tsnClient.bridging.streamCoder.encoder outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 57 TSN5GPLUS.tsnClient.ieee8021q.qTagHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 58 TSN5GPLUS.tsnClient.ieee8021q.qTagHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 59 TSN5GPLUS.tsnClient.ethernet.macHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 60 TSN5GPLUS.tsnClient.ethernet.macHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 61 TSN5GPLUS.tsnClient.ethernet.paddingInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 62 TSN5GPLUS.tsnClient.ethernet.paddingInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 63 TSN5GPLUS.tsnClient.ethernet.fcsInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 64 TSN5GPLUS.tsnClient.ethernet.fcsInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 65 TSN5GPLUS.tsnClient.eth[0].macLayer.queue incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
-vector 66 TSN5GPLUS.tsnClient.eth[0].macLayer.queue queueLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length"
-attr unit pk
-vector 67 TSN5GPLUS.tsnClient.eth[0].macLayer.queue queueBitLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length"
-attr unit b
-vector 68 TSN5GPLUS.tsnClient.eth[0].macLayer.queue queueingTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
-vector 69 TSN5GPLUS.tsnClient.eth[0].macLayer.queue outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
-vector 70 TSN5GPLUS.tsnClient.eth[0].macLayer.server incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths"
-attr unit b
-vector 71 TSN5GPLUS.tsnClient.eth[0].macLayer.server outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths"
-attr unit b
-vector 72 TSN5GPLUS.tsnClient.eth[0].macLayer.outboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 73 TSN5GPLUS.tsnClient.eth[0].macLayer.outboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 74 TSN5GPLUS.tsnClient.eth[0].phyLayer.phyHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 75 TSN5GPLUS.tsnClient.eth[0].phyLayer.phyHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 76 TSN5GPLUS.tsnClient.eth[0].phyLayer.outboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 77 TSN5GPLUS.tsnClient.eth[0].phyLayer.outboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 78 TSN5GPLUS.tsnClient.eth[0].phyLayer.transmitter transmissionTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetDuration(transmissionEnded)
-attr title "transmission time"
-attr unit s
-vector 79 TSN5GPLUS.ue1.udp packetSent:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetSent
-attr title "packets sent, packetBytes"
-vector 80 TSN5GPLUS.ue1.cellularNic.pdcpRrc receivedPacketFromUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromUpperLayer
-vector 81 TSN5GPLUS.ue1.cellularNic.pdcpRrc sentPacketToLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToLowerLayer
-vector 82 TSN5GPLUS.ue1.cellularNic.nrRlc.um receivedPacketFromUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromUpperLayer
-vector 83 TSN5GPLUS.ue1.cellularNic.nrMac receivedPacketFromUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromUpperLayer
-vector 84 TSN5GPLUS.gnb.cellularNic.mac avgServedBlocksUl:vector ETV
-attr recordingmode vector
-attr source avgServedBlocksUl
-attr title "Avg Served Blocks Ul"
-attr unit blocks
-vector 85 TSN5GPLUS.gnb.cellularNic.mac avgServedBlocksDl:vector ETV
-attr recordingmode vector
-attr source avgServedBlocksDl
-attr title "Avg Served Blocks Dl"
-attr unit blocks
-vector 86 TSN5GPLUS.ue1.cellularNic.nrMac sentPacketToLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToLowerLayer
-vector 87 TSN5GPLUS.ue1.cellularNic.channelModel[0] measuredSinrUl:vector ETV
-attr recordingmode vector
-attr source measuredSinrUl
-attr title "SINR measured at feedback computation, UL"
-attr unit dB
-vector 88 TSN5GPLUS.ue1.cellularNic.channelModel[0] measuredSinrDl:vector ETV
-attr recordingmode vector
-attr source measuredSinrDl
-attr title "SINR measured at feedback computation, DL"
-attr unit dB
-vector 89 TSN5GPLUS.gnb.cellularNic.mac receivedPacketFromLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromLowerLayer
-vector 90 TSN5GPLUS.ue1.cellularNic.nrChannelModel[0] measuredSinrUl:vector ETV
-attr recordingmode vector
-attr source measuredSinrUl
-attr title "SINR measured at feedback computation, UL"
-attr unit dB
-vector 91 TSN5GPLUS.ue1.cellularNic.nrChannelModel[0] measuredSinrDl:vector ETV
-attr recordingmode vector
-attr source measuredSinrDl
-attr title "SINR measured at feedback computation, DL"
-attr unit dB
-vector 92 TSN5GPLUS.gnb.cellularNic.mac sentPacketToLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToLowerLayer
-vector 93 TSN5GPLUS.ue1.cellularNic.nrMac receivedPacketFromLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromLowerLayer
-vector 94 TSN5GPLUS.ue1.cellularNic.nrMac sentPacketToUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToUpperLayer
-vector 95 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcPacketLossUl:vector ETV
-attr recordingmode vector
-attr source rlcPacketLossUl
-attr title "rlc Packet Loss"
-attr unit ""
-vector 96 TSN5GPLUS.ue1.cellularNic.nrRlc.um sentPacketToLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToLowerLayer
-vector 97 TSN5GPLUS.ue1.cellularNic.nrPhy averageCqiUl:vector ETV
-attr recordingmode vector
-attr source averageCqiUl
-attr title "Average Cqi reported in UL"
-attr unit cqi
-vector 98 TSN5GPLUS.ue1.cellularNic.nrChannelModel[0] rcvdSinrUl:vector ETV
-attr recordingmode vector
-attr source rcvdSinrUl
-attr title "SINR measured at packet reception, UL"
-attr unit dB
-vector 99 TSN5GPLUS.ue1.cellularNic.nrMac macDelayUl:vector ETV
-attr recordingmode vector
-attr source macDelayUl
-attr title "Delay at the MAC layer UL"
-attr unit s
-vector 100 TSN5GPLUS.gnb.cellularNic.mac sentPacketToUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToUpperLayer
-vector 101 TSN5GPLUS.gnb.cellularNic.rlc.um receivedPacketFromLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromLowerLayer
-vector 102 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcPduThroughputUl:vector ETV
-attr recordingmode vector
-attr source rlcPduThroughputUl
-attr title "Throughput at the rlc layer UL"
-attr unit Bps
-vector 103 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcPduDelayUl:vector ETV
-attr recordingmode vector
-attr source rlcPduDelayUl
-attr title "Delay at the rlc layer UL"
-attr unit s
-vector 104 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcPduPacketLossUl:vector ETV
-attr recordingmode vector
-attr source rlcPduPacketLossUl
-attr title "rlc Packet Loss"
-attr unit ""
-vector 105 TSN5GPLUS.ue1.cellularNic.nrMac harqErrorRate_1st_Ul:vector ETV
-attr recordingmode vector
-attr source harqErrorRate_1st_Ul
-attr title "Harq Error Rate Ul (1st tx)"
-attr unit ""
-vector 106 TSN5GPLUS.ue1.cellularNic.nrMac harqErrorRateUl:vector ETV
-attr recordingmode vector
-attr source harqErrorRateUl
-attr title "Harq Error Rate Ul"
-attr unit ""
-vector 107 TSN5GPLUS.ue1.cellularNic.nrMac harqTxAttemptsUl:vector ETV
-attr recordingmode vector
-attr source harqTxAttemptsUl
-attr title "Harq Tx Attempts Ul"
-attr unit ""
-vector 108 TSN5GPLUS.tsnClient.bridging.streamIdentifier.identifier incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming data rate"
-attr unit bps
-vector 109 TSN5GPLUS.tsnClient.bridging.streamIdentifier.identifier outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing data rate"
-attr unit bps
-vector 110 TSN5GPLUS.tsnClient.bridging.streamCoder.encoder incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming data rate"
-attr unit bps
-vector 111 TSN5GPLUS.tsnClient.bridging.streamCoder.encoder outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing data rate"
-attr unit bps
-vector 112 TSN5GPLUS.tsnClient.ieee8021q.qTagHeaderInserter incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming data rate"
-attr unit bps
-vector 113 TSN5GPLUS.tsnClient.ieee8021q.qTagHeaderInserter outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing data rate"
-attr unit bps
-vector 114 TSN5GPLUS.tsnClient.ethernet.macHeaderInserter incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming data rate"
-attr unit bps
-vector 115 TSN5GPLUS.tsnClient.ethernet.macHeaderInserter outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing data rate"
-attr unit bps
-vector 116 TSN5GPLUS.tsnClient.ethernet.paddingInserter incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming data rate"
-attr unit bps
-vector 117 TSN5GPLUS.tsnClient.ethernet.paddingInserter outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing data rate"
-attr unit bps
-vector 118 TSN5GPLUS.tsnClient.ethernet.fcsInserter incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming data rate"
-attr unit bps
-vector 119 TSN5GPLUS.tsnClient.ethernet.fcsInserter outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing data rate"
-attr unit bps
-vector 120 TSN5GPLUS.tsnClient.eth[0].macLayer.queue incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source throughput(packetPushStarted)
-attr title "incoming datarate"
-attr unit bps
-vector 121 TSN5GPLUS.tsnClient.eth[0].phyLayer.transmitter utilization:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
-attr title utilization
-attr unit %
-vector 122 TSN5GPLUS.tsnClient.eth[0].macLayer.queue outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source throughput(packetPulled)
-attr title "outgoing datarate"
-attr unit bps
-vector 123 TSN5GPLUS.tsnClient.eth[0].macLayer.server incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source throughput(packetPulled)
-attr title "incoming datarate"
-attr unit bps
-vector 124 TSN5GPLUS.tsnClient.eth[0].macLayer.server outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source throughput(packetPushed)
-attr title "outgoing datarate"
-attr unit bps
-vector 125 TSN5GPLUS.tsnClient.eth[0].macLayer.outboundEmitter incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming data rate"
-attr unit bps
-vector 126 TSN5GPLUS.tsnClient.eth[0].macLayer.outboundEmitter outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing data rate"
-attr unit bps
-vector 127 TSN5GPLUS.tsnClient.eth[0].phyLayer.phyHeaderInserter incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming data rate"
-attr unit bps
-vector 128 TSN5GPLUS.tsnClient.eth[0].phyLayer.phyHeaderInserter outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing data rate"
-attr unit bps
-vector 129 TSN5GPLUS.tsnClient.eth[0].phyLayer.outboundEmitter incomingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming data rate"
-attr unit bps
-vector 130 TSN5GPLUS.tsnClient.eth[0].phyLayer.outboundEmitter outgoingDataRate:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source "throughput(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing data rate"
-attr unit bps
-vector 131 TSN5GPLUS.tsnClient.eth[0].phyLayer.transmitter throughput:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr source throughput(transmissionEnded)
-attr title throughput
-attr unit bps
-vector 132 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcThroughputUl:vector ETV
-attr recordingmode vector
-attr source rlcThroughputUl
-attr title "Throughput at the rlc layer UL"
-attr unit Bps
-vector 133 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcPacketLossTotal:vector ETV
-attr recordingmode vector
-attr source rlcPacketLossTotal
-attr title "rlc Packet Loss"
-attr unit ""
-vector 134 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcDelayUl:vector ETV
-attr recordingmode vector
-attr source rlcDelayUl
-attr title "Delay at the rlc layer UL"
-attr unit s
-vector 135 TSN5GPLUS.gnb.cellularNic.rlc.um sentPacketToUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToUpperLayer
-vector 136 TSN5GPLUS.gnb.cellularNic.pdcpRrc receivedPacketFromLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromLowerLayer
-vector 137 TSN5GPLUS.gnb.cellularNic.pdcpRrc sentPacketToUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToUpperLayer
-vector 138 TSN5GPLUS.gnb.udp packetSent:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetSent
-attr title "packets sent, packetBytes"
-vector 139 TSN5GPLUS.gnb.pppIf.queue incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
-vector 140 TSN5GPLUS.gnb.pppIf.queue queueingTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
-vector 141 TSN5GPLUS.gnb.pppIf.queue outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
-vector 142 TSN5GPLUS.gnb.pppIf.ppp rcvdPkFromHl:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, packetBytes"
-vector 143 TSN5GPLUS.gnb.pppIf.ppp txPk:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, packetBytes"
-vector 144 TSN5GPLUS.gnb.pppIf.queue queueLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length"
-attr unit pk
-vector 145 TSN5GPLUS.gnb.pppIf.queue queueBitLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length"
-attr unit b
-vector 146 TSN5GPLUS.upf.ppp[0].ppp rxPkOk:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, packetBytes"
-vector 147 TSN5GPLUS.upf.ppp[0].ppp passedUpPk:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, packetBytes"
-vector 148 TSN5GPLUS.upf.udp packetReceived:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetReceived
-attr title "packets received, packetBytes"
-vector 149 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.receiver receptionTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetDuration(receptionEnded)
-attr title "reception time"
-attr unit s
-vector 150 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.inboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 151 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.inboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 152 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.phyHeaderChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 153 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.phyHeaderChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 154 TSN5GPLUS.tsnSwitch.eth[1].macLayer.inboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 155 TSN5GPLUS.tsnSwitch.eth[1].macLayer.inboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 156 TSN5GPLUS.tsnSwitch.eth[1].macLayer.fcsChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 157 TSN5GPLUS.tsnSwitch.eth[1].macLayer.fcsChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 158 TSN5GPLUS.tsnSwitch.ethernet.fcsChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 159 TSN5GPLUS.tsnSwitch.ethernet.fcsChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 160 TSN5GPLUS.tsnSwitch.ethernet.macHeaderChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 161 TSN5GPLUS.tsnSwitch.ethernet.macHeaderChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 162 TSN5GPLUS.tsnSwitch.ieee8021q.qTagHeaderChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 163 TSN5GPLUS.tsnSwitch.ieee8021q.qTagHeaderChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 164 TSN5GPLUS.tsnSwitch.bridging.interfaceRelay.learner incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 165 TSN5GPLUS.tsnSwitch.bridging.interfaceRelay.learner outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 166 TSN5GPLUS.tsnSwitch.bridging.streamCoder.decoder incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 167 TSN5GPLUS.tsnSwitch.bridging.streamCoder.decoder outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 168 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.classifier packetLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
-vector 169 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[0] incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 170 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[0] outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 171 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[0] incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 172 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[0] outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 173 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.filter[0] incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 174 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.filter[0] outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 175 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.barrier incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 176 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.barrier outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 177 TSN5GPLUS.tsnSwitch.bridging.directionReverser.reverser incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 178 TSN5GPLUS.tsnSwitch.bridging.directionReverser.reverser outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 179 TSN5GPLUS.tsnSwitch.bridging.streamIdentifier.identifier incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 180 TSN5GPLUS.tsnSwitch.bridging.streamIdentifier.identifier outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 181 TSN5GPLUS.tsnSwitch.bridging.streamCoder.encoder incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 182 TSN5GPLUS.tsnSwitch.bridging.streamCoder.encoder outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 183 TSN5GPLUS.tsnSwitch.ieee8021q.qTagHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 184 TSN5GPLUS.tsnSwitch.ieee8021q.qTagHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 185 TSN5GPLUS.tsnSwitch.ethernet.macHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 186 TSN5GPLUS.tsnSwitch.ethernet.macHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 187 TSN5GPLUS.tsnSwitch.ethernet.paddingInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 188 TSN5GPLUS.tsnSwitch.ethernet.paddingInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 189 TSN5GPLUS.tsnSwitch.ethernet.fcsInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 190 TSN5GPLUS.tsnSwitch.ethernet.fcsInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 191 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(localSignal(packetPushStarted))
-attr title "incoming packet lengths"
-attr unit b
-vector 192 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.classifier packetLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
-vector 193 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.queue[0] incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
-attr recordingmode vector
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
-vector 194 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.queue[0] queueLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length"
-attr unit pk
-vector 195 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.queue[0] queueBitLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length"
-attr unit b
-vector 196 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue queueLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
-attr title "queue length"
-attr unit pk
-vector 197 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue queueBitLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
-attr title "queue bit length"
-attr unit b
-vector 198 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.queue[0] queueingTime:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
-attr recordingmode vector
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
-vector 199 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.queue[0] outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
-vector 200 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 201 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 202 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 203 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 204 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelection packetLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "packet lengths"
-attr unit b
-vector 205 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue queueingTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source queueingTime(localSignal(packetPulled))
-attr title "queueing times"
-attr unit s
-vector 206 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(localSignal(packetPulled))
-attr title "outgoing packet lengths"
-attr unit b
-vector 207 TSN5GPLUS.tsnSwitch.eth[0].macLayer.server incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths"
-attr unit b
-vector 208 TSN5GPLUS.tsnSwitch.eth[0].macLayer.server outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths"
-attr unit b
-vector 209 TSN5GPLUS.tsnSwitch.eth[0].macLayer.outboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 210 TSN5GPLUS.tsnSwitch.eth[0].macLayer.outboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 211 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.phyHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 212 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.phyHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 213 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.outboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 214 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.outboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 215 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.transmitter transmissionTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetDuration(transmissionEnded)
-attr title "transmission time"
-attr unit s
-vector 216 TSN5GPLUS.tsnServer.eth[0].phyLayer.receiver receptionTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetDuration(receptionEnded)
-attr title "reception time"
-attr unit s
-vector 217 TSN5GPLUS.tsnServer.eth[0].phyLayer.inboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 218 TSN5GPLUS.tsnServer.eth[0].phyLayer.inboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 219 TSN5GPLUS.tsnServer.eth[0].phyLayer.phyHeaderChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 220 TSN5GPLUS.tsnServer.eth[0].phyLayer.phyHeaderChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 221 TSN5GPLUS.tsnServer.eth[0].macLayer.inboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 222 TSN5GPLUS.tsnServer.eth[0].macLayer.inboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 223 TSN5GPLUS.tsnServer.eth[0].macLayer.fcsChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 224 TSN5GPLUS.tsnServer.eth[0].macLayer.fcsChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 225 TSN5GPLUS.tsnServer.ethernet.fcsChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 226 TSN5GPLUS.tsnServer.ethernet.fcsChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 227 TSN5GPLUS.tsnServer.ethernet.macHeaderChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 228 TSN5GPLUS.tsnServer.ethernet.macHeaderChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 229 TSN5GPLUS.tsnServer.ieee8021q.qTagHeaderChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 230 TSN5GPLUS.tsnServer.ieee8021q.qTagHeaderChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 231 TSN5GPLUS.tsnServer.bridging.streamCoder.decoder incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 232 TSN5GPLUS.tsnServer.bridging.streamCoder.decoder outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 233 TSN5GPLUS.tsnServer.udp packetReceived:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetReceived
-attr title "packets received, packetBytes"
-vector 234 TSN5GPLUS.tsnServer.app[0] echoedPk:vector(packetBytes) ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnServer.besteffort
-attr recordingmode vector(packetBytes)
-attr source packetSent
-attr title "packets echoed, packetBytes"
-vector 235 TSN5GPLUS.tsnServer.udp packetSent:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetSent
-attr title "packets sent, packetBytes"
-vector 236 TSN5GPLUS.tsnServer.bridging.streamIdentifier.identifier incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 237 TSN5GPLUS.tsnServer.bridging.streamIdentifier.identifier outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 238 TSN5GPLUS.tsnServer.bridging.streamCoder.encoder incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 239 TSN5GPLUS.tsnServer.bridging.streamCoder.encoder outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 240 TSN5GPLUS.tsnServer.ieee8021q.qTagHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 241 TSN5GPLUS.tsnServer.ieee8021q.qTagHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 242 TSN5GPLUS.tsnServer.ethernet.macHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 243 TSN5GPLUS.tsnServer.ethernet.macHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 244 TSN5GPLUS.tsnServer.ethernet.paddingInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 245 TSN5GPLUS.tsnServer.ethernet.paddingInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 246 TSN5GPLUS.tsnServer.ethernet.fcsInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 247 TSN5GPLUS.tsnServer.ethernet.fcsInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 248 TSN5GPLUS.tsnServer.eth[0].macLayer.queue incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
-vector 249 TSN5GPLUS.tsnServer.eth[0].macLayer.queue queueLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length"
-attr unit pk
-vector 250 TSN5GPLUS.tsnServer.eth[0].macLayer.queue queueBitLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length"
-attr unit b
-vector 251 TSN5GPLUS.tsnServer.eth[0].macLayer.queue queueingTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
-vector 252 TSN5GPLUS.tsnServer.eth[0].macLayer.queue outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
-vector 253 TSN5GPLUS.tsnServer.eth[0].macLayer.server incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths"
-attr unit b
-vector 254 TSN5GPLUS.tsnServer.eth[0].macLayer.server outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths"
-attr unit b
-vector 255 TSN5GPLUS.tsnServer.eth[0].macLayer.outboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 256 TSN5GPLUS.tsnServer.eth[0].macLayer.outboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 257 TSN5GPLUS.tsnServer.eth[0].phyLayer.phyHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 258 TSN5GPLUS.tsnServer.eth[0].phyLayer.phyHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 259 TSN5GPLUS.tsnServer.eth[0].phyLayer.outboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 260 TSN5GPLUS.tsnServer.eth[0].phyLayer.outboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 261 TSN5GPLUS.tsnServer.eth[0].phyLayer.transmitter transmissionTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetDuration(transmissionEnded)
-attr title "transmission time"
-attr unit s
-vector 262 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.receiver receptionTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetDuration(receptionEnded)
-attr title "reception time"
-attr unit s
-vector 263 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.inboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 264 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.inboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 265 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.phyHeaderChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 266 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.phyHeaderChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 267 TSN5GPLUS.tsnSwitch.eth[0].macLayer.inboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 268 TSN5GPLUS.tsnSwitch.eth[0].macLayer.inboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 269 TSN5GPLUS.tsnSwitch.eth[0].macLayer.fcsChecker incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 270 TSN5GPLUS.tsnSwitch.eth[0].macLayer.fcsChecker outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 271 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(localSignal(packetPushStarted))
-attr title "incoming packet lengths"
-attr unit b
-vector 272 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.classifier packetLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
-vector 273 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.queue[0] incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
-attr recordingmode vector
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
-vector 274 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.queue[0] queueLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length"
-attr unit pk
-vector 275 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.queue[0] queueBitLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length"
-attr unit b
-vector 276 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue queueLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
-attr title "queue length"
-attr unit pk
-vector 277 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue queueBitLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
-attr title "queue bit length"
-attr unit b
-vector 278 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.queue[0] queueingTime:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
-attr recordingmode vector
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
-vector 279 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.queue[0] outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
-vector 280 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 281 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 282 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 283 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 284 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelection packetLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "packet lengths"
-attr unit b
-vector 285 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue queueingTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source queueingTime(localSignal(packetPulled))
-attr title "queueing times"
-attr unit s
-vector 286 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(localSignal(packetPulled))
-attr title "outgoing packet lengths"
-attr unit b
-vector 287 TSN5GPLUS.tsnSwitch.eth[1].macLayer.server incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths"
-attr unit b
-vector 288 TSN5GPLUS.tsnSwitch.eth[1].macLayer.server outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths"
-attr unit b
-vector 289 TSN5GPLUS.tsnSwitch.eth[1].macLayer.outboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 290 TSN5GPLUS.tsnSwitch.eth[1].macLayer.outboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 291 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.phyHeaderInserter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 292 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.phyHeaderInserter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 293 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.outboundEmitter incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
-attr title "incoming packet lengths"
-attr unit b
-vector 294 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.outboundEmitter outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
-attr title "outgoing packet lengths"
-attr unit b
-vector 295 TSN5GPLUS.tsnClient.app[0].source dataRate:vector ETV
-attr interpolationmode linear
-attr moduledisplaypath TSN5GPLUS.tsnClient.besteffort.source
-attr recordingmode vector
-attr source throughput(packetPushed)
-attr title "data rate"
-attr unit bps
-vector 296 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.transmitter transmissionTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetDuration(transmissionEnded)
-attr title "transmission time"
-attr unit s
-vector 297 TSN5GPLUS.upf.udp packetSent:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetSent
-attr title "packets sent, packetBytes"
-vector 298 TSN5GPLUS.upf.ppp[0].queue incomingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
-vector 299 TSN5GPLUS.upf.ppp[0].queue queueingTime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
-vector 300 TSN5GPLUS.upf.ppp[0].queue outgoingPacketLengths:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
-vector 301 TSN5GPLUS.upf.ppp[0].ppp rcvdPkFromHl:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, packetBytes"
-vector 302 TSN5GPLUS.upf.ppp[0].ppp txPk:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, packetBytes"
-vector 303 TSN5GPLUS.upf.ppp[0].queue queueLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length"
-attr unit pk
-vector 304 TSN5GPLUS.upf.ppp[0].queue queueBitLength:vector ETV
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length"
-attr unit b
-vector 305 TSN5GPLUS.gnb.pppIf.ppp rxPkOk:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, packetBytes"
-vector 306 TSN5GPLUS.gnb.pppIf.ppp passedUpPk:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, packetBytes"
-vector 307 TSN5GPLUS.gnb.udp packetReceived:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetReceived
-attr title "packets received, packetBytes"
-vector 308 TSN5GPLUS.gnb.cellularNic.pdcpRrc receivedPacketFromUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromUpperLayer
-vector 309 TSN5GPLUS.gnb.cellularNic.pdcpRrc sentPacketToLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToLowerLayer
-vector 310 TSN5GPLUS.gnb.cellularNic.rlc.um receivedPacketFromUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromUpperLayer
-vector 311 TSN5GPLUS.gnb.cellularNic.mac receivedPacketFromUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromUpperLayer
-vector 312 TSN5GPLUS.gnb.cellularNic.rlc.um rlcPacketLossDl:vector ETV
-attr recordingmode vector
-attr source rlcPacketLossDl
-attr title "rlc Packet Loss"
-attr unit ""
-vector 313 TSN5GPLUS.gnb.cellularNic.rlc.um sentPacketToLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToLowerLayer
-vector 314 TSN5GPLUS.ue1.cellularNic.nrPhy averageCqiDl:vector ETV
-attr recordingmode vector
-attr source averageCqiDl
-attr title "Average Cqi reported in DL"
-attr unit cqi
-vector 315 TSN5GPLUS.ue1.cellularNic.nrChannelModel[0] distance:vector ETV
-attr recordingmode vector
-attr source distance
-attr title "distance between UE and serving base station"
-attr unit meters
-vector 316 TSN5GPLUS.ue1.cellularNic.nrChannelModel[0] rcvdSinrDl:vector ETV
-attr recordingmode vector
-attr source rcvdSinrDl
-attr title "SINR measured at packet reception, DL"
-attr unit dB
-vector 317 TSN5GPLUS.gnb.cellularNic.mac macDelayDl:vector ETV
-attr recordingmode vector
-attr source macDelayDl
-attr title "Delay at the MAC layer UL"
-attr unit s
-vector 318 TSN5GPLUS.ue1.cellularNic.nrRlc.um receivedPacketFromLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromLowerLayer
-vector 319 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcPduThroughputDl:vector ETV
-attr recordingmode vector
-attr source rlcPduThroughputDl
-attr title "Throughput at the rlc layer DL"
-attr unit Bps
-vector 320 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcPduDelayDl:vector ETV
-attr recordingmode vector
-attr source rlcPduDelayDl
-attr title "Delay at the rlc layer UL"
-attr unit s
-vector 321 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcPduPacketLossDl:vector ETV
-attr recordingmode vector
-attr source rlcPduPacketLossDl
-attr title "rlc Packet Loss"
-attr unit ""
-vector 322 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcThroughputDl:vector ETV
-attr recordingmode vector
-attr source rlcThroughputDl
-attr title "Throughput at the rlc layer DL"
-attr unit Bps
-vector 323 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcPacketLossDl:vector ETV
-attr recordingmode vector
-attr source rlcPacketLossDl
-attr title "rlc Packet Loss"
-attr unit ""
-vector 324 TSN5GPLUS.ue1.cellularNic.nrRlc.um rlcDelayDl:vector ETV
-attr recordingmode vector
-attr source rlcDelayDl
-attr title "Delay at the rlc layer DL"
-attr unit s
-vector 325 TSN5GPLUS.ue1.cellularNic.nrRlc.um sentPacketToUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToUpperLayer
-vector 326 TSN5GPLUS.ue1.cellularNic.pdcpRrc receivedPacketFromLowerLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source receivedPacketFromLowerLayer
-vector 327 TSN5GPLUS.ue1.cellularNic.pdcpRrc sentPacketToUpperLayer:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source sentPacketToUpperLayer
-vector 328 TSN5GPLUS.ue1.udp packetReceived:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetReceived
-attr title "packets received, packetBytes"
-0	88322 56 0 3563 0 0.02140839 4 0 1 1 1
-1	88378 56 0 3560 0 0.02140743 4 0 1 1 1
-2	88434 28 0 3538 0 0.02132711 2 0 1 1 1
-3	88462 8 0 0 0 0 1 0 0 0 0
-4	88470 8 0 0 0 0 1 0 0 0 0
-5	88478 56 0 3544 0 0.02132802 4 0 1 1 1
-6	88534 56 0 3535 0 0.02132706 4 0 1 1 1
-7	88590 55 0 3592 0 0.02148876 4 0 1 1 1
-8	88645 55 0 3585 0 0.0214878 4 0 1 1 1
-9	88700 48 0 3608 0 0.02157385 3 0 1 1 1
-10	88748 30 0 3498 0 0.02108605 2 0 1 1 1
-11	88778 9 0 0 0 0 1 0 0 0 0
-12	88787 9 0 0 0 0 1 0 0 0 0
-13	88796 60 0 4374 0 0.027 4 0 1 2 2
-14	88856 9 0 0 0 0 1 0 0 0 0
-15	88865 29 0 3611 0 0.0215739 2 0 1 1 1
-16	88894 9 0 0 0 0 1 0 0 0 0
-17	88903 9 0 0 0 0 1 0 0 0 0
-18	88912 9347 0 4361 0 0.026974629918 390 0 1 194 194
-19	98259 9337 0 4349 0 0.026973669918 390 0 1 194 194
-20	107596 9 0 0 0 0 1 0 0 0 0
-21	107605 9 0 0 0 0 1 0 0 0 0
-22	107614 9 0 0 0 0 1 0 0 0 0
-23	107623 9 0 0 0 0 1 0 0 0 0
-24	107632 9 0 0 0 0 1 0 0 0 0
-25	107641 9 0 0 0 0 1 0 0 0 0
-26	107650 9 0 0 0 0 1 1 1 1 1
-27	107659 9 0 0 0 0 1 1 1 1 1
-28	107668 133 0 3561 0 0.02140748 6 67630.8 80000 455261.6 34676519132.48
-29	107801 13 0 0 0 0 1 80000 80000 80000 6400000000
-30	107814 18 0 0 0 0 2 1 1 2 2
-31	107832 93 0 3514 0 0.02124674 5 0 0 0 0
-32	107925 18 0 0 0 0 2 1 1 2 2
-33	107943 9 0 0 0 0 1 0 0 0 0
-34	107952 18 0 0 0 0 2 1 1 2 2
-35	107970 93 0 3562 0 0.02140748 5 0 0 0 0
-36	108063 18 0 0 0 0 2 1 1 2 2
-37	108081 9 0 0 0 0 1 0 0 0 0
-38	108090 3250 0 4309 0 0.026772567802 118 7568 7568 893024 6758405632
-39	111340 2075 0 4343 0 0.026893349918 76 7568 7568 575168 4352871424
-40	113415 9 0 0 0 0 1 1 1 1 1
-41	113424 9 0 0 0 0 1 1 1 1 1
-42	113433 9 0 0 0 0 1 1 1 1 1
-43	113442 9 0 0 0 0 1 0 0 0 0
-44	113451 9 0 0 0 0 1 1 1 1 1
-45	113460 9 0 0 0 0 1 0 0 0 0
-46	113469 9 0 0 0 0 1 1 1 1 1
-47	113478 9 0 0 0 0 1 0 0 0 0
-48	113487 9 0 0 0 0 1 1 1 1 1
-49	113496 9 0 0 0 0 1 0 0 0 0
-50	113505 3132 8 4310 0 0.026772567802 118 946 946 111628 105600088
-51	116637 1999 9 4344 0 0.026893349918 76 946 946 71896 68013616
-52	118636 5133 21 4345 0 0.026893349918 194 954 954 185076 176562504
-53	123769 5328 25 4347 0 0.026893349918 194 7792 7792 1511648 11778761216
-54	129097 5328 25 4347 0 0.026893349918 194 7792 7792 1511648 11778761216
-55	134425 5328 25 4347 0 0.026893349918 194 7792 7792 1511648 11778761216
-56	139753 5328 25 4347 0 0.026893349918 194 7792 7792 1511648 11778761216
-57	145081 5328 25 4347 0 0.026893349918 194 7792 7792 1511648 11778761216
-58	150409 5328 25 4347 0 0.026893349918 194 7824 7824 1517856 11875705344
-59	155737 5328 25 4347 0 0.026893349918 194 7824 7824 1517856 11875705344
-60	161065 5328 25 4347 0 0.026893349918 194 7936 7936 1539584 12218138624
-61	166393 5328 25 4347 0 0.026893349918 194 7936 7936 1539584 12218138624
-62	171721 5328 25 4347 0 0.026893349918 194 7936 7936 1539584 12218138624
-63	177049 5328 25 4347 0 0.026893349918 194 7936 7936 1539584 12218138624
-64	182377 5328 25 4347 0 0.026893349918 194 7968 7968 1545792 12316870656
-65	187705 5328 25 4347 0 0.026893349918 194 7968 7968 1545792 12316870656
-66	193033 9402 25 4348 0 0.026893349918 388 0 7 416 1110
-67	202435 10214 25 4348 0 0.026893349918 388 0 55776 3314688 70472816640
-68	212649 6054 27 4348 0 0.026893349918 194 0 0.000544433256 0.013606037251 3.1807981771294e-06
-69	218703 5238 27 4348 0 0.026893349918 194 7968 7968 1545792 12316870656
-70	223941 5238 27 4348 0 0.026893349918 194 7968 7968 1545792 12316870656
-71	229179 5238 27 4348 0 0.026893349918 194 7968 7968 1545792 12316870656
-72	234417 5238 27 4348 0 0.026893349918 194 7968 7968 1545792 12316870656
-73	239655 5238 27 4348 0 0.026893349918 194 7968 7968 1545792 12316870656
-74	244893 5238 27 4348 0 0.026893349918 194 7968 7968 1545792 12316870656
-75	250131 5238 27 4348 0 0.026893349918 194 8032 8032 1558208 12515526656
-76	255369 5238 27 4348 0 0.026893349918 194 8032 8032 1558208 12515526656
-77	260607 5238 27 4348 0 0.026893349918 194 8032 8032 1558208 12515526656
-78	265845 6215 34 4349 0.00008032 0.026973669918 194 8.032e-05 8.032e-05 0.01558208 1.2515526656e-06
-79	272060 5251 37 4352 0.00008037 0.026973719918 194 1012 1012 196328 198683936
-80	277311 5252 42 4357 0.00008037 0.026973719918 194 1032 1032 200208 206614656
-81	282563 5252 42 4357 0.00008037 0.026973719918 194 1033 1033 200402 207015266
-82	287815 5252 43 4358 0.00008037 0.026973719918 194 1033 1033 200402 207015266
-83	293067 5573 45 4385 0.00008037 0.027 212 26 1035 203638 208286778
-84	298640 425 300 4363 0.001 0.027 27 0 6 115 685
-85	299065 425 300 4363 0.001 0.027 27 0 6 8 40
-86	299490 350 302 4376 0.001 0.027 20 1 168 2719 452371
-87	299840 153 519 4253 0.002 0.026 5 -4.2294798010466 -4.2294798010466 -21.147399005233 89.442496937307
-88	299993 148 519 4253 0.002 0.026 5 18.966607188411 18.966607188411 94.833035942054 1798.6609411974
-89	300141 457 520 4262 0.002 0.026 27 1 168 2559 424155
-90	300598 148 521 4255 0.002 0.026 5 6.1192095969529 6.1192095969529 30.596047984764 187.2236304572
-91	300746 148 521 4255 0.002 0.026 5 32.193143107252 32.193143107252 160.96571553626 5181.99231562
-92	300894 591 524 4363 0.002 0.027 37 1 846 1076 753776
-93	301485 526 666 4260 0.003 0.026 33 1 846 1072 753772
-94	302011 322 941 4376 0.005 0.027 20 1 844 1055 749603
-95	302333 318 943 4381 0.005 0.027 20 0 0 0 0
-96	302651 321 943 4381 0.005 0.027 18 26 166 2848 469128
-97	302972 270 948 4252 0.005 0.026 17 4 4 68 272
-98	303242 479 1156 4261 0.006 0.026 16 6.1192095969529 9.1696856048414 100.95782955913 645.75402546323
-99	303721 279 1559 4363 0.009 0.027 14 0.004 0.004 0.056 0.000224
-100	304000 298 1559 4363 0.009 0.027 16 1 166 2186 358906
-101	304298 264 1563 4367 0.009 0.027 14 26 166 2184 358904
-102	304562 237 1563 4367 0.009 0.027 14 0 0 0 0
-103	304799 293 1563 4367 0.009 0.027 14 0.004 0.004 0.056 0.000224
-104	305092 237 1563 4367 0.009 0.027 14 0 0 0 0
-105	305329 202 1725 4258 0.01 0.026 12 0 0 0 0
-106	305531 202 1725 4258 0.01 0.026 12 0 0 0 0
-107	305733 202 1725 4258 0.01 0.026 12 1 1 12 12
-108	305935 40 2037 2037 0.011874913238 0.011874913238 1 65617321.523373 65617321.523373 65617321.523373 4.3056328839017e+15
-109	305975 40 2037 2037 0.011874913238 0.011874913238 1 65617321.523373 65617321.523373 65617321.523373 4.3056328839017e+15
-110	306015 40 2037 2037 0.011874913238 0.011874913238 1 65617321.523373 65617321.523373 65617321.523373 4.3056328839017e+15
-111	306055 40 2037 2037 0.011874913238 0.011874913238 1 65617321.523373 65617321.523373 65617321.523373 4.3056328839017e+15
-112	306095 40 2037 2037 0.011874913238 0.011874913238 1 65617321.523373 65617321.523373 65617321.523373 4.3056328839017e+15
-113	306135 40 2037 2037 0.011874913238 0.011874913238 1 65886797.176446 65886797.176446 65886797.176446 4.3410700421701e+15
-114	306175 40 2037 2037 0.011874913238 0.011874913238 1 65886797.176446 65886797.176446 65886797.176446 4.3410700421701e+15
-115	306215 40 2037 2037 0.011874913238 0.011874913238 1 66829961.962203 66829961.962203 66829961.962203 4.4662438158695e+15
-116	306255 40 2037 2037 0.011874913238 0.011874913238 1 66829961.962203 66829961.962203 66829961.962203 4.4662438158695e+15
-117	306295 40 2037 2037 0.011874913238 0.011874913238 1 66829961.962203 66829961.962203 66829961.962203 4.4662438158695e+15
-118	306335 40 2037 2037 0.011874913238 0.011874913238 1 66829961.962203 66829961.962203 66829961.962203 4.4662438158695e+15
-119	306375 40 2037 2037 0.011874913238 0.011874913238 1 67099437.615276 67099437.615276 67099437.615276 4.5023345282864e+15
-120	306415 40 2037 2037 0.011874913238 0.011874913238 1 67099437.615276 67099437.615276 67099437.615276 4.5023345282864e+15
-121	306455 39 2104 2104 0.01215374522 0.01215374522 1 65.425758530094 65.425758530094 65.425758530094 4280.5298792381
-122	306494 39 2117 2117 0.01215470522 0.01215470522 1 65554860.079116 65554860.079116 65554860.079116 4.2974396799925e+15
-123	306533 39 2117 2117 0.01215470522 0.01215470522 1 65554860.079116 65554860.079116 65554860.079116 4.2974396799925e+15
-124	306572 39 2117 2117 0.01215470522 0.01215470522 1 65554860.079116 65554860.079116 65554860.079116 4.2974396799925e+15
-125	306611 39 2117 2117 0.01215470522 0.01215470522 1 65554860.079116 65554860.079116 65554860.079116 4.2974396799925e+15
-126	306650 39 2117 2117 0.01215470522 0.01215470522 1 65554860.079116 65554860.079116 65554860.079116 4.2974396799925e+15
-127	306689 39 2117 2117 0.01215470522 0.01215470522 1 65554860.079116 65554860.079116 65554860.079116 4.2974396799925e+15
-128	306728 39 2117 2117 0.01215470522 0.01215470522 1 66081405.139992 66081405.139992 66081405.139992 4.3667521052758e+15
-129	306767 39 2117 2117 0.01215470522 0.01215470522 1 66081405.139992 66081405.139992 66081405.139992 4.3667521052758e+15
-130	306806 39 2117 2117 0.01215470522 0.01215470522 1 66081405.139992 66081405.139992 66081405.139992 4.3667521052758e+15
-131	306845 39 2118 2118 0.01223502522 0.01223502522 1 65647596.597271 65647596.597271 65647596.597271 4.3096069389981e+15
-132	306884 62 3458 4367 0.021 0.027 2 49190.476190476 76518.518518519 125708.99470899 8274786624.1147
-133	306946 51 3458 4380 0.021 0.027 3 0 0 0 0
-134	306997 52 3458 4367 0.021 0.027 2 0.02091963 0.02683835 0.04775798 0.0011579279500594
-135	307049 40 3458 4367 0.021 0.027 2 1033 1033 2066 2134178
-136	307089 40 3459 4368 0.021 0.027 2 1033 1033 2066 2134178
-137	307129 40 3459 4368 0.021 0.027 2 1032 1032 2064 2130048
-138	307169 40 3463 4372 0.021 0.027 2 1048 1048 2096 2196608
-139	307209 40 3465 4374 0.021 0.027 2 8544 8544 17088 145999872
-140	307249 34 3465 4374 0.021 0.027 2 0 0 0 0
-141	307283 40 3465 4374 0.021 0.027 2 8544 8544 17088 145999872
-142	307323 40 3465 4374 0.021 0.027 2 1068 1068 2136 2281248
-143	307363 40 3465 4374 0.021 0.027 2 1075 1075 2150 2311250
-144	307403 34 3465 4374 0.021 0.027 2 0 0 0 0
-145	307437 34 3465 4374 0.021 0.027 2 0 0 0 0
-146	307471 25 3496 3496 0.02108605 0.02108605 1 1075 1075 1075 1155625
-147	307496 25 3496 3496 0.02108605 0.02108605 1 1068 1068 1068 1140624
-148	307521 25 3498 3498 0.02108605 0.02108605 1 1048 1048 1048 1098304
-149	307546 31 3513 3513 0.02124674 0.02124674 1 0.00016064 0.00016064 0.00016064 2.58052096e-08
-150	307577 25 3513 3513 0.02124674 0.02124674 1 8032 8032 8032 64513024
-151	307602 25 3513 3513 0.02124674 0.02124674 1 8032 8032 8032 64513024
-152	307627 25 3513 3513 0.02124674 0.02124674 1 8032 8032 8032 64513024
-153	307652 25 3513 3513 0.02124674 0.02124674 1 7968 7968 7968 63489024
-154	307677 25 3513 3513 0.02124674 0.02124674 1 7968 7968 7968 63489024
-155	307702 25 3513 3513 0.02124674 0.02124674 1 7968 7968 7968 63489024
-156	307727 25 3513 3513 0.02124674 0.02124674 1 7968 7968 7968 63489024
-157	307752 25 3513 3513 0.02124674 0.02124674 1 7968 7968 7968 63489024
-158	307777 50 3513 3561 0.02124674 0.02140748 2 7968 7968 15936 126978048
-159	307827 50 3513 3561 0.02124674 0.02140748 2 7936 7936 15872 125960192
-160	307877 50 3513 3561 0.02124674 0.02140748 2 7936 7936 15872 125960192
-161	307927 50 3513 3561 0.02124674 0.02140748 2 7824 7824 15648 122429952
-162	307977 50 3513 3561 0.02124674 0.02140748 2 7824 7824 15648 122429952
-163	308027 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-164	308077 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-165	308127 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-166	308177 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-167	308227 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-168	308277 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-169	308327 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-170	308377 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-171	308427 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-172	308477 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-173	308527 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-174	308577 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-175	308627 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-176	308677 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-177	308727 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-178	308777 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-179	308827 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-180	308877 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-181	308927 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-182	308977 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-183	309027 50 3513 3561 0.02124674 0.02140748 2 7792 7792 15584 121430528
-184	309077 50 3513 3561 0.02124674 0.02140748 2 7824 7824 15648 122429952
-185	309127 50 3513 3561 0.02124674 0.02140748 2 7824 7824 15648 122429952
-186	309177 50 3513 3561 0.02124674 0.02140748 2 7936 7936 15872 125960192
-187	309227 50 3513 3561 0.02124674 0.02140748 2 7936 7936 15872 125960192
-188	309277 50 3513 3561 0.02124674 0.02140748 2 7936 7936 15872 125960192
-189	309327 50 3513 3561 0.02124674 0.02140748 2 7936 7936 15872 125960192
-190	309377 50 3513 3561 0.02124674 0.02140748 2 7968 7968 15936 126978048
-191	309427 25 3513 3513 0.02124674 0.02124674 1 7968 7968 7968 63489024
-192	309452 25 3513 3513 0.02124674 0.02124674 1 7968 7968 7968 63489024
-193	309477 25 3513 3513 0.02124674 0.02124674 1 7968 7968 7968 63489024
-194	309502 44 3513 3514 0.02124674 0.02124674 2 0 1 1 1
-195	309546 47 3513 3514 0.02124674 0.02124674 2 0 7968 7968 63489024
-196	309593 44 3513 3514 0.02124674 0.02124674 2 0 1 1 1
-197	309637 47 3513 3514 0.02124674 0.02124674 2 0 7968 7968 63489024
-198	309684 22 3514 3514 0.02124674 0.02124674 1 0 0 0 0
-199	309706 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-200	309731 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-201	309756 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-202	309781 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-203	309806 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-204	309831 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-205	309856 22 3514 3514 0.02124674 0.02124674 1 0 0 0 0
-206	309878 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-207	309903 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-208	309928 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-209	309953 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-210	309978 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-211	310003 25 3514 3514 0.02124674 0.02124674 1 7968 7968 7968 63489024
-212	310028 25 3514 3514 0.02124674 0.02124674 1 8032 8032 8032 64513024
-213	310053 25 3514 3514 0.02124674 0.02124674 1 8032 8032 8032 64513024
-214	310078 25 3514 3514 0.02124674 0.02124674 1 8032 8032 8032 64513024
-215	310103 30 3535 3535 0.02132706 0.02132706 1 8.032e-05 8.032e-05 8.032e-05 6.4513024e-09
-216	310133 30 3536 3536 0.02132711 0.02132711 1 8.032e-05 8.032e-05 8.032e-05 6.4513024e-09
-217	310163 25 3536 3536 0.02132711 0.02132711 1 8032 8032 8032 64513024
-218	310188 25 3536 3536 0.02132711 0.02132711 1 8032 8032 8032 64513024
-219	310213 25 3536 3536 0.02132711 0.02132711 1 8032 8032 8032 64513024
-220	310238 25 3536 3536 0.02132711 0.02132711 1 7968 7968 7968 63489024
-221	310263 25 3536 3536 0.02132711 0.02132711 1 7968 7968 7968 63489024
-222	310288 25 3536 3536 0.02132711 0.02132711 1 7968 7968 7968 63489024
-223	310313 25 3536 3536 0.02132711 0.02132711 1 7968 7968 7968 63489024
-224	310338 25 3536 3536 0.02132711 0.02132711 1 7968 7968 7968 63489024
-225	310363 25 3536 3536 0.02132711 0.02132711 1 7968 7968 7968 63489024
-226	310388 25 3536 3536 0.02132711 0.02132711 1 7936 7936 7936 62980096
-227	310413 25 3536 3536 0.02132711 0.02132711 1 7936 7936 7936 62980096
-228	310438 25 3536 3536 0.02132711 0.02132711 1 7824 7824 7824 61214976
-229	310463 25 3536 3536 0.02132711 0.02132711 1 7824 7824 7824 61214976
-230	310488 25 3536 3536 0.02132711 0.02132711 1 7792 7792 7792 60715264
-231	310513 25 3536 3536 0.02132711 0.02132711 1 7792 7792 7792 60715264
-232	310538 25 3536 3536 0.02132711 0.02132711 1 7792 7792 7792 60715264
-233	310563 24 3538 3538 0.02132711 0.02132711 1 954 954 954 910116
-234	310587 24 3539 3539 0.02132711 0.02132711 1 946 946 946 894916
-235	310611 24 3540 3540 0.02132711 0.02132711 1 954 954 954 910116
-236	310635 25 3542 3542 0.02132711 0.02132711 1 7792 7792 7792 60715264
-237	310660 25 3542 3542 0.02132711 0.02132711 1 7792 7792 7792 60715264
-238	310685 25 3542 3542 0.02132711 0.02132711 1 7792 7792 7792 60715264
-239	310710 25 3542 3542 0.02132711 0.02132711 1 7792 7792 7792 60715264
-240	310735 25 3542 3542 0.02132711 0.02132711 1 7792 7792 7792 60715264
-241	310760 25 3542 3542 0.02132711 0.02132711 1 7824 7824 7824 61214976
-242	310785 25 3542 3542 0.02132711 0.02132711 1 7824 7824 7824 61214976
-243	310810 25 3542 3542 0.02132711 0.02132711 1 7936 7936 7936 62980096
-244	310835 25 3542 3542 0.02132711 0.02132711 1 7936 7936 7936 62980096
-245	310860 25 3542 3542 0.02132711 0.02132711 1 7936 7936 7936 62980096
-246	310885 25 3542 3542 0.02132711 0.02132711 1 7936 7936 7936 62980096
-247	310910 25 3542 3542 0.02132711 0.02132711 1 7968 7968 7968 63489024
-248	310935 25 3542 3542 0.02132711 0.02132711 1 7968 7968 7968 63489024
-249	310960 44 3542 3543 0.02132711 0.02132711 2 0 1 1 1
-250	311004 47 3542 3543 0.02132711 0.02132711 2 0 7968 7968 63489024
-251	311051 22 3543 3543 0.02132711 0.02132711 1 0 0 0 0
-252	311073 25 3543 3543 0.02132711 0.02132711 1 7968 7968 7968 63489024
-253	311098 25 3543 3543 0.02132711 0.02132711 1 7968 7968 7968 63489024
-254	311123 25 3543 3543 0.02132711 0.02132711 1 7968 7968 7968 63489024
-255	311148 25 3543 3543 0.02132711 0.02132711 1 7968 7968 7968 63489024
-256	311173 25 3543 3543 0.02132711 0.02132711 1 7968 7968 7968 63489024
-257	311198 25 3543 3543 0.02132711 0.02132711 1 7968 7968 7968 63489024
-258	311223 25 3543 3543 0.02132711 0.02132711 1 8032 8032 8032 64513024
-259	311248 25 3543 3543 0.02132711 0.02132711 1 8032 8032 8032 64513024
-260	311273 25 3543 3543 0.02132711 0.02132711 1 8032 8032 8032 64513024
-261	311298 30 3560 3560 0.02140743 0.02140743 1 8.032e-05 8.032e-05 8.032e-05 6.4513024e-09
-262	311328 30 3561 3561 0.02140748 0.02140748 1 8.032e-05 8.032e-05 8.032e-05 6.4513024e-09
-263	311358 25 3561 3561 0.02140748 0.02140748 1 8032 8032 8032 64513024
-264	311383 25 3561 3561 0.02140748 0.02140748 1 8032 8032 8032 64513024
-265	311408 25 3561 3561 0.02140748 0.02140748 1 8032 8032 8032 64513024
-266	311433 25 3561 3561 0.02140748 0.02140748 1 7968 7968 7968 63489024
-267	311458 25 3561 3561 0.02140748 0.02140748 1 7968 7968 7968 63489024
-268	311483 25 3561 3561 0.02140748 0.02140748 1 7968 7968 7968 63489024
-269	311508 25 3561 3561 0.02140748 0.02140748 1 7968 7968 7968 63489024
-270	311533 25 3561 3561 0.02140748 0.02140748 1 7968 7968 7968 63489024
-271	311558 25 3561 3561 0.02140748 0.02140748 1 7968 7968 7968 63489024
-272	311583 25 3561 3561 0.02140748 0.02140748 1 7968 7968 7968 63489024
-273	311608 25 3561 3561 0.02140748 0.02140748 1 7968 7968 7968 63489024
-274	311633 44 3561 3562 0.02140748 0.02140748 2 0 1 1 1
-275	311677 47 3561 3562 0.02140748 0.02140748 2 0 7968 7968 63489024
-276	311724 44 3561 3562 0.02140748 0.02140748 2 0 1 1 1
-277	311768 47 3561 3562 0.02140748 0.02140748 2 0 7968 7968 63489024
-278	311815 22 3562 3562 0.02140748 0.02140748 1 0 0 0 0
-279	311837 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-280	311862 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-281	311887 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-282	311912 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-283	311937 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-284	311962 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-285	311987 22 3562 3562 0.02140748 0.02140748 1 0 0 0 0
-286	312009 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-287	312034 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-288	312059 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-289	312084 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-290	312109 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-291	312134 25 3562 3562 0.02140748 0.02140748 1 7968 7968 7968 63489024
-292	312159 25 3562 3562 0.02140748 0.02140748 1 8032 8032 8032 64513024
-293	312184 25 3562 3562 0.02140748 0.02140748 1 8032 8032 8032 64513024
-294	312209 25 3562 3562 0.02140748 0.02140748 1 8032 8032 8032 64513024
-295	312234 40 3565 3565 0.021444425226 0.021444425226 1 35291223.337729 35291223.337729 35291223.337729 1.2454704446735e+15
-296	312274 29 3585 3585 0.0214878 0.0214878 1 8.032e-05 8.032e-05 8.032e-05 6.4513024e-09
-297	312303 25 3589 3589 0.02148785 0.02148785 1 1048 1048 1048 1098304
-298	312328 25 3591 3591 0.02148785 0.02148785 1 8544 8544 8544 72999936
-299	312353 22 3591 3591 0.02148785 0.02148785 1 0 0 0 0
-300	312375 25 3591 3591 0.02148785 0.02148785 1 8544 8544 8544 72999936
-301	312400 25 3591 3591 0.02148785 0.02148785 1 1068 1068 1068 1140624
-302	312425 25 3591 3591 0.02148785 0.02148785 1 1075 1075 1075 1155625
-303	312450 22 3591 3591 0.02148785 0.02148785 1 0 0 0 0
-304	312472 22 3591 3591 0.02148785 0.02148785 1 0 0 0 0
-305	312494 24 3609 3609 0.0215739 0.0215739 1 1075 1075 1075 1155625
-306	312518 24 3609 3609 0.0215739 0.0215739 1 1068 1068 1068 1140624
-307	312542 24 3611 3611 0.0215739 0.0215739 1 1048 1048 1048 1098304
-308	312566 24 3614 3614 0.0215739 0.0215739 1 1032 1032 1032 1065024
-309	312590 24 3614 3614 0.0215739 0.0215739 1 1033 1033 1033 1067089
-310	312614 24 3615 3615 0.0215739 0.0215739 1 1033 1033 1033 1067089
-311	312638 62 3617 3783 0.0215739 0.023 3 193 1035 2072 1820810
-312	312700 34 3670 3781 0.022 0.023 2 0 0 0 0
-313	312734 38 3670 3781 0.022 0.023 2 193 844 1037 749585
-314	312772 36 3798 3950 0.023 0.024 2 14 14 28 392
-315	312808 62 3798 3950 0.023 0.024 2 775.61977619089 775.61977619089 1551.2395523818 1203172.0744368
-316	312870 62 3798 3950 0.023 0.024 2 32.193143107252 32.291604857475 64.484747964726 2079.1462073953
-317	312932 42 4242 4376 0.026 0.027 2 0.004 0.004 0.008 3.2e-05
-318	312974 38 4246 4380 0.026 0.027 2 193 844 1037 749585
-319	313012 34 4246 4380 0.026 0.027 2 0 0 0 0
-320	313046 42 4246 4380 0.026 0.027 2 0.004 0.004 0.008 3.2e-05
-321	313088 34 4246 4380 0.026 0.027 2 0 0 0 0
-322	313122 31 4380 4380 0.027 0.027 1 38259.259259259 38259.259259259 38259.259259259 1463770919.0672
-323	313153 17 4380 4380 0.027 0.027 1 0 0 0 0
-324	313170 25 4380 4380 0.027 0.027 1 0.0054261 0.0054261 0.0054261 2.944256121e-05
-325	313195 20 4380 4380 0.027 0.027 1 1033 1033 1033 1067089
-326	313215 20 4382 4382 0.027 0.027 1 1033 1033 1033 1067089
-327	313235 20 4382 4382 0.027 0.027 1 1032 1032 1032 1065024
-328	313255 20 4387 4387 0.027 0.027 1 1012 1012 1012 1024144
+0	24706 16 0 0 0 0 2 0 0 0 0
+1	24722 16 0 0 0 0 2 0 0 0 0
+2	24738 8 0 0 0 0 1 0 0 0 0
+3	24746 8 0 0 0 0 1 0 0 0 0
+4	24754 8 0 0 0 0 1 0 0 0 0
+5	24762 16 0 0 0 0 2 0 0 0 0
+6	24778 16 0 0 0 0 2 0 0 0 0
+7	24794 16 0 0 0 0 2 0 0 0 0
+8	24810 16 0 0 0 0 2 0 0 0 0
+9	24826 16 0 0 0 0 2 0 0 0 0
+10	24842 18 0 0 0 0 2 0 0 0 0
+11	24860 18 0 0 0 0 2 0 0 0 0
+12	24878 18 0 0 0 0 2 0 0 0 0
+13	24896 9 0 0 0 0 1 0 0 0 0
+14	24905 9 0 0 0 0 1 0 0 0 0
+15	24914 9 0 0 0 0 1 0 0 0 0
+16	24923 9 0 0 0 0 1 0 0 0 0
+17	24932 9 0 0 0 0 1 0 0 0 0
+18	24941 9 0 0 0 0 1 0 0 0 0
+19	24950 9 0 0 0 0 1 0 0 0 0
+20	24959 9 0 0 0 0 1 0 0 0 0
+21	24968 9 0 0 0 0 1 0 0 0 0
+22	24977 9 0 0 0 0 1 0 0 0 0
+23	24986 9 0 0 0 0 1 0 0 0 0
+24	24995 9 0 0 0 0 1 0 0 0 0
+25	25004 18 0 0 0 0 2 0 0 0 0
+26	25022 18 0 0 0 0 2 0 0 0 0
+27	25040 9 0 0 0 0 1 0 0 0 0
+28	25049 9 0 0 0 0 1 0 0 0 0
+29	25058 9 0 0 0 0 1 0 0 0 0
+30	25067 9 0 0 0 0 1 0 0 0 0
+31	25076 9 0 0 0 0 1 0 0 0 0
+32	25085 9 0 0 0 0 1 0 0 0 0
+33	25094 9 0 0 0 0 1 1 1 1 1
+34	25103 9 0 0 0 0 1 1 1 1 1
+35	25112 13 0 0 0 0 1 80000 80000 80000 6400000000
+36	25125 13 0 0 0 0 1 80000 80000 80000 6400000000
+37	25138 18 0 0 0 0 2 1 1 2 2
+38	25156 9 0 0 0 0 1 0 0 0 0
+39	25165 18 0 0 0 0 2 1 1 2 2
+40	25183 9 0 0 0 0 1 0 0 0 0
+41	25192 18 0 0 0 0 2 1 1 2 2
+42	25210 9 0 0 0 0 1 0 0 0 0
+43	25219 18 0 0 0 0 2 1 1 2 2
+44	25237 9 0 0 0 0 1 0 0 0 0
+45	25246 18 0 0 0 0 2 1 1 2 2
+46	25264 9 0 0 0 0 1 0 0 0 0
+47	25273 18 0 0 0 0 2 1 1 2 2
+48	25291 9 0 0 0 0 1 0 0 0 0
+49	25300 12 0 0 0 0 1 7568 7568 7568 57274624
+50	25312 12 0 0 0 0 1 7568 7568 7568 57274624
+51	25324 9 0 0 0 0 1 0 0 0 0
+52	25333 9 0 0 0 0 1 0 0 0 0
+53	25342 9 0 0 0 0 1 1 1 1 1
+54	25351 9 0 0 0 0 1 1 1 1 1
+55	25360 9 0 0 0 0 1 1 1 1 1
+56	25369 9 0 0 0 0 1 0 0 0 0
+57	25378 9 0 0 0 0 1 1 1 1 1
+58	25387 9 0 0 0 0 1 0 0 0 0
+59	25396 9 0 0 0 0 1 1 1 1 1
+60	25405 9 0 0 0 0 1 0 0 0 0
+61	25414 9 0 0 0 0 1 1 1 1 1
+62	25423 9 0 0 0 0 1 0 0 0 0
+63	25432 9 0 0 0 0 1 1 1 1 1
+64	25441 9 0 0 0 0 1 0 0 0 0
+65	25450 9 0 0 0 0 1 1 1 1 1
+66	25459 9 0 0 0 0 1 0 0 0 0
+67	25468 9 0 0 0 0 1 0 0 0 0
+68	25477 9 0 0 0 0 1 0 0 0 0
+69	25486 12 13 13 0 0 1 946 946 946 894916
+70	25498 12 14 14 0 0 1 946 946 946 894916
+71	25510 12 26 26 0 0 1 432 432 432 186624
 

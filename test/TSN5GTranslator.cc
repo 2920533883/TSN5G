@@ -79,9 +79,7 @@ void TSN5GTranslator::handleMessage(cMessage *msg)
         pkt->removeTagIfPresent<DispatchProtocolReq>();
         auto eph = pkt->popAtFront<EthernetPhyHeader>();
         auto emh = pkt->popAtFront<EthernetMacHeader>();
-        // get srcAddress
-//            string macAddress = Ip2Mac[destIpAddress.str()];
-//            MacAddress* src = new MacAddress(macAddress.c_str());
+
         MacAddress* src = new MacAddress(srcMacAddress);
         const MacAddress& new_mac = *src;
         const auto& new_emh = makeShared<EthernetMacHeader>();
@@ -99,6 +97,9 @@ void TSN5GTranslator::handleMessage(cMessage *msg)
         Signal *signal = new Signal(msg->getFullName(), msg->getKind(), pkt->getBitLength());
         signal->encapsulate(pkt);
         EV << signal->getByteLength() << endl;
+        cGate *physOutGate = gate("phys$o");
+        cChannel *datarateChannel = physOutGate->getTransmissionChannel();
+        while (datarateChannel->isBusy());
         send(signal, "phys$o");
     }
     else {

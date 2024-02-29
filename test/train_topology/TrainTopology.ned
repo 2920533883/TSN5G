@@ -59,29 +59,37 @@ network TrainTopology extends TsnNetworkBase
             @display("p=1893,79");
         }
         switch1: TsnSwitch {
-            @display("p=1122,182");
+            @display("p=811,199");
         }
         switch2: TsnSwitch {
-            @display("p=1684,182");
+            @display("p=1995,189");
         }
         switch3: TsnSwitch {
             @display("p=1375,78");
         }
         upf1: MyUpf {
-            @display("p=811,336;is=s");
+            @display("p=819,291;is=s");
         }
         upf2: MyUpf {
-            @display("p=2003,346;is=s");
+            @display("p=2004.6,319.8;is=s");
         }
         gnb1: gNodeB {
             gateway = "upf1";
-            @display("p=811.19995,485.03");
+            @display("p=811,473");
         }
 
         gnb2: gNodeB {
             gateway = "upf2";
-            @display("p=2011.1,485.03");
+            @display("p=2037,492");
         }
+        //        gnb3: gNodeB {
+        //            gateway = "upf2";
+        //            @display("p=1569.1,439.4");
+        //        }
+        //        gnb4: gNodeB {
+        //            gateway = "upf2";
+        //            @display("p=2328.3,439.4");
+        //        }
         //        HVACClient[numHVAC]: TsnDevice {
         //            
         //            @display("i=device/card;p=350,600,r,600;is=s;");
@@ -110,7 +118,7 @@ network TrainTopology extends TsnNetworkBase
 
     connections:
         //        for i=0..numHVAC-1 {
-        //            HVACClient[i].ethg++ <--> Eth1G <--> HVACUe[i].phys;
+        //            HVACClient[i].ethg++ <--> Eth100RM <--> HVACUe[i].phys;
         //        }
         //        for i=0..numFAS-1 {
         //            FASClient[i].ethg++ <--> Eth1G <--> FASUe[i].phys;
@@ -124,17 +132,19 @@ network TrainTopology extends TsnNetworkBase
         }
 
         switch1.ethg++ <--> Eth1G <--> switch3.ethg++;
-//        switch1.ethg++ <--> Eth1G <--> switch2.ethg++;
+        //        switch1.ethg++ <--> Eth1G <--> switch2.ethg++;
         switch3.ethg++ <--> Eth1G <--> switch2.ethg++;
         switch1.ethg++ <--> Eth1G <--> upf1.filterGate;
         switch2.ethg++ <--> Eth1G <--> upf2.filterGate;
-        //        nwtt1.phys <--> Eth1G <--> switch1.ethg++;
-        //        iupf1.pppg++ <--> Eth1G <--> gnb1.ppp;
-        //        iupf2.pppg++ <--> Eth1G <--> gnb2.ppp;
+//        switch1.ethg++ <--> Eth1G <--> upf2.filterGate;
+
         //# X2 connections
         gnb1.x2++ <--> Eth1G <--> gnb2.x2++;
+        //        gnb3.x2++ <--> Eth1G <--> gnb4.x2++;
         gnb1.ppp <--> Eth1G <--> upf1.pppg++;
         gnb2.ppp <--> Eth1G <--> upf2.pppg++;
+        //        gnb3.ppp <--> Eth1G <--> upf2.pppg++;
+        //        gnb4.ppp <--> Eth1G <--> upf2.pppg++;
         switch3.ethg++ <--> Eth1G <--> server.ethg++;
 
 }

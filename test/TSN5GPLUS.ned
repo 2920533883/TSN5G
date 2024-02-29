@@ -54,6 +54,9 @@ network TSN5GPLUS extends TsnNetworkBase
         tsnSwitch: TsnSwitch {
             @display("p=985.26996,334.62");
         }
+        tsnClock: TsnClock {
+            @display("p=943.35126,161.9675");
+        }
         upf: MyUpf {
             @display("p=682.76,251.81");
         }
@@ -69,7 +72,9 @@ network TSN5GPLUS extends TsnNetworkBase
 
     connections:
         tsnClient.ethg++ <--> Eth100M <--> ue1.phys;
+        tsnClock.ethg++ <--> Eth100M <--> tsnSwitch.ethg++;
         tsnSwitch.ethg++ <--> Eth100M <--> tsnServer.ethg++;
+        
         upf.filterGate <--> Eth100M <--> tsnSwitch.ethg++;
         upf.pppg++ <--> Eth100M <--> gnb.ppp;
 }

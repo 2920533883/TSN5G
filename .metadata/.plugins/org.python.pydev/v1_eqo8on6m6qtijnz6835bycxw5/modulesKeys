@@ -305,6 +305,7 @@ apport.packaging_impl|/usr/lib/python3/dist-packages/apport/packaging_impl.py
 apport.report|/usr/lib/python3/dist-packages/apport/report.py
 apport.sandboxutils|/usr/lib/python3/dist-packages/apport/sandboxutils.py
 apport.ui|/usr/lib/python3/dist-packages/apport/ui.py
+apport.user_group|/usr/lib/python3/dist-packages/apport/user_group.py
 apport_python_hook|/usr/lib/python3/dist-packages/apport_python_hook.py
 apt.__init__|/usr/lib/python3/dist-packages/apt/__init__.py
 apt.auth|/usr/lib/python3/dist-packages/apt/auth.py
