@@ -16,8 +16,10 @@ simple MyNWTT{
     parameters:
 
     gates:
-        inout phys;
-        input in;
-        output out;
+        input upperLayerIn;
+        output upperLayerOut;
+        
+        input lowerLayerIn;
+        output lowerLayerOut;
 
 }

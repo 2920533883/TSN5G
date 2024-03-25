@@ -1,0 +1,176 @@
+[General]
+network = TrainTopology
+*.switch1.macTable.forwardingTable = [{address:"0A-AA-00-00-00-01", interface:"eth1"}]
+*.switch2.macTable.forwardingTable = [{address:"0A-AA-00-00-00-01", interface:"eth1"}]
+*.switch3.macTable.forwardingTable = [{address:"0A-AA-00-00-00-01", interface:"eth1"}]
+*.switch4.macTable.forwardingTable = [{address:"0A-AA-00-00-00-01", interface:"eth1"}]
+*.switch5.macTable.forwardingTable = [{address:"0A-AA-00-00-00-01", interface:"eth2"}]
+*.switch6.macTable.forwardingTable = [{address:"0A-AA-00-00-00-01", interface:"eth2"}]
+#*.server.ipv4.routingTable.routingFile = "server.mrt"
+*.*.dstt.destAddress = "server"
+*.*Ue[0..1].masterId = 0
+*.*Ue[0..1].nrMacCellId = 1
+*.*Ue[0..1].nrMasterId = 1
+*.*Ue[2..3].masterId = 0
+*.*Ue[2..3].nrMacCellId = 1
+*.*Ue[2..3].nrMasterId = 2
+*.*Ue[4..5].masterId = 0
+*.*Ue[4..5].nrMacCellId = 1
+*.*Ue[4..5].nrMasterId = 3
+*.*Ue[6..7].masterId = 0
+*.*Ue[6..7].nrMacCellId = 1
+*.*Ue[6..7].nrMasterId = 4
+
+
+############### CA configuration ################# 
+*.carrierAggregation.numComponentCarriers = 1
+*.carrierAggregation.componentCarrier[0].numerologyIndex = 0
+*.carrierAggregation.componentCarrier[0].carrierFrequency = 2GHz
+*.carrierAggregation.componentCarrier[0].numBands = 25
+
+*.gnb*.cellularNic.numCarriers = 1
+*.gnb*.cellularNic.channelModel[0].componentCarrierIndex = 0
+*.*Ue[*].cellularNic.numCarriers = 1
+*.*Ue[*].cellularNic.nrChannelModel[0].componentCarrierIndex = 0
+**.hasStatus = true
+*.*.hasOutgoingStreams = true
+*.*.hasIncomingStreams = true
+# client stream identification
+*.*Client*.bridging.streamIdentifier.identifier.mapping = [{stream: "besteffort", packetFilter: expr(has(udp) && udp.destPort == 1000)},
+															{stream: "video", packetFilter: expr(has(udp) && udp.destPort == 1000)}]
+
+# client stream encoding
+*.*Client*.bridging.streamCoder.encoder.mapping = [{stream: "besteffort", pcp: 0},
+													{stream: "video", pcp: 0}]
+
+*.server.bridging.streamIdentifier.identifier.mapping = [{stream: "besteffort", packetFilter: expr(has(udp) && udp.destPort == 1000)},
+															{stream: "video", packetFilter: expr(has(udp) && udp.destPort == 1000)}]
+
+*.server.bridging.streamCoder.encoder.mapping = [{stream: "besteffort", pcp: 0},
+													{stream: "video", pcp: 0}]
+
+
+*.switch*.bridging.streamIdentifier.identifier.mapping = [{stream: "besteffort", packetFilter: expr(has(udp) && udp.destPort == 1000)},
+															{stream: "video", packetFilter: expr(has(udp) && udp.destPort == 1000)}]
+
+*.switch*.bridging.streamCoder.encoder.mapping = [{stream: "besteffort", pcp: 0},
+													{stream: "video", pcp: 0}]
+
+*.switch*.bridging.streamCoder.decoder.mapping = [{pcp: 0, stream: "besteffort"},
+                                                 {pcp: 0, stream: "video"}]
+
+*.switch*.hasIngressTrafficFiltering = true
+#*.switch*.bridging.interfaceRelay.typename = "Ieee8021dRelay"
+*.switch*.bridging.streamFilter.ingress.typename = "SimpleIeee8021qFilter"
+*.switch*.bridging.streamFilter.ingress.numStreams = 2
+*.switch*.bridging.streamFilter.ingress.classifier.mapping = {besteffort: 0, video: 1}
+*.switch*.bridging.streamFilter.ingress.*[0].display-name = "besteffort"
+*.switch*.bridging.streamFilter.ingress.*[1].display-name = "video"
+*.switch*.bridging.streamFilter.ingress.meter[0..1].typename = "EligibilityTimeMeter"
+*.switch*.bridging.streamFilter.ingress.meter[*].committedInformationRate = 20Mbps
+*.switch*.bridging.streamFilter.ingress.meter[*].committedBurstSize = 10kB
+*.switch*.bridging.streamFilter.ingress.filter[0..1].typename = "EligibilityTimeFilter"
+
+
+
+# enable egress traffic shaping
+*.switch*.hasEgressTrafficShaping = true
+*.switch*.bridging.directionReverser.reverser.excludeEncapsulationProtocols = ["ieee8021qctag"]
+
+*.switch*.eth[*].macLayer.queue.numTrafficClasses = 2
+*.switch*.eth[*].macLayer.queue.*[0].display-name = "besteffort"
+*.switch*.eth[*].macLayer.queue.*[1].display-name = "video"
+*.switch*.eth[*].macLayer.queue.queue[0..1].typename = "EligibilityTimeQueue"
+
+*.switch*.eth[*].macLayer.queue.transmissionSelectionAlgorithm[0..1].typename = "Ieee8021qAsynchronousShaper"
+
+[config1]
+*.*Client*.numApps = 1
+# qian yin
+*.TCUClient*.app[*].typename = "UdpSourceApp"
+*.TCUClient*.app[0].display-name = "besteffort"
+*.TCUClient*.app[*].io.destAddress = "server"
+*.TCUClient*.app[0].io.destPort = 1000
+*.TCUClient*.app[0].io.localPort = 1000
+*.TCUClient*.app[0].source.packetLength = 50B
+*.TCUClient*.app[0].source.productionInterval = 10ms
+*.TCUClient*.app[*].source.initialProductionOffset = 20ms
+
+# zhidong
+*.BCUClient*.app[*].typename = "UdpSourceApp"
+*.BCUClient*.app[0].display-name = "video"
+*.BCUClient*.app[*].io.destAddress = "server"
+*.BCUClient*.app[0].io.destPort = 1000
+*.BCUClient*.app[0].io.localPort = 1000
+*.BCUClient*.app[0].source.packetLength = 46B
+*.BCUClient*.app[0].source.productionInterval = 10ms
+*.BCUClient*.app[*].source.initialProductionOffset = 20ms
+
+# dian chi
+*.BCClient*.app[*].typename = "UdpSourceApp"
+*.BCClient*.app[0].display-name = "besteffort"
+*.BCClient*.app[*].io.destAddress = "server"
+*.BCClient*.app[0].io.destPort = 1000
+*.BCClient*.app[0].io.localPort = 1000
+*.BCClient*.app[0].source.packetLength = 36B
+*.BCClient*.app[0].source.productionInterval = 200ms
+*.BCClient*.app[*].source.initialProductionOffset = 15ms
+
+# men kong
+*.DCUClient*.app[*].typename = "UdpSourceApp"
+*.DCUClient*.app[0].display-name = "besteffort"
+*.DCUClient*.app[*].io.destAddress = "server"
+*.DCUClient*.app[0].io.destPort = 1000
+*.DCUClient*.app[0].io.localPort = 1000
+*.DCUClient*.app[0].source.packetLength = 42B
+*.DCUClient*.app[0].source.productionInterval = 500ms
+*.DCUClient*.app[*].source.initialProductionOffset = 0ms
+
+*.HVACClient*.app[*].typename = "UdpSourceApp"
+*.HVACClient*.app[0].display-name = "besteffort"
+*.HVACClient*.app[*].io.destAddress = "server"
+*.HVACClient*.app[0].io.destPort = 1000
+*.HVACClient*.app[0].io.localPort = 1000
+*.HVACClient*.app[0].source.packetLength = 36B
+*.HVACClient*.app[0].source.productionInterval = 200ms
+*.HVACClient*.app[*].source.initialProductionOffset = 10ms
+
+# xian shi
+*.PISClient*.app[*].typename = "UdpSourceApp"
+*.PISClient*.app[0].display-name = "besteffort"
+*.PISClient*.app[*].io.destAddress = "server"
+*.PISClient*.app[0].io.destPort = 1000
+*.PISClient*.app[0].io.localPort = 1000
+*.PISClient*.app[0].source.packetLength = 300B
+*.PISClient*.app[0].source.productionInterval = 500ms
+*.PISClient*.app[*].source.initialProductionOffset = 0ms
+
+*.server.numApps = 2
+*.server.app[0..1].typename = "UdpSinkApp"
+*.server.app[0].display-name = "besteffort"
+*.server.app[1].display-name = "video"
+*.server.app[0].io.localPort = 1000
+*.server.app[1].io.localPort = 1001
+#*.server.app[2..3].typename = "UdpSourceApp"
+
+
+[config2]
+*.TCUClient*.numApps = 1
+# qian yin
+*.TCUClient*.app[*].typename = "UdpSourceApp"
+*.TCUClient*.app[0].display-name = "besteffort"
+*.TCUClient*.app[*].io.destAddress = "BCUClient[0]"
+*.TCUClient*.app[0].io.destPort = 1000
+*.TCUClient*.app[0].io.localPort = 1000
+*.TCUClient*.app[0].source.packetLength = 50B
+*.TCUClient*.app[0].source.productionInterval = 10ms
+*.TCUClient*.app[*].source.initialProductionOffset = 20ms
+
+*.BCUClient[0].numApps = 1
+*.BCUClient[0].app[0].typename = "UdpSinkApp"
+*.BCUClient[0].app[0].display-name = "besteffort"
+*.BCUClient[0].app[0].io.localPort = 1000
+
+[config3]
+extends = config2;
+*.scenarioManager.script = xmldoc("scenario.xml");

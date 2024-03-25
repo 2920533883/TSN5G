@@ -1,0 +1,7 @@
+<scenario>
+	<at t="60s">
+		<set-param module="host[2].mobility" par="speed" value="10"/>
+		<crash module="switch5"/>
+	</at>
+  
+</scenario>

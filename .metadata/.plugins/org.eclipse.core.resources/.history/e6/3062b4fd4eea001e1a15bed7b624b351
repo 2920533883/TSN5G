@@ -1,0 +1,6 @@
+<scenario>
+	<at t="2s">
+	<crash module="switch5"/>
+	</at>
+  
+</scenario>

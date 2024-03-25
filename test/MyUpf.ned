@@ -18,10 +18,11 @@ import inet.transportlayer.udp.Udp;
 import inet.node.base.NetworkLayerNodeBase;
 import simu5g.corenetwork.gtp.GtpUser;
 import simu5g.corenetwork.trafficFlowFilter.TrafficFlowFilter;
-
+import inet.queueing.gate.PeriodicGate;
+import *;
 module MyUpf extends NetworkLayerNodeBase
 {
-    parameters:
+parameters:
         @display("bgb=1348.9225,1103.51;i=abstract/switch");
         @figure[applicationLayer](type=rectangle; pos=250,6; size=1000,130; lineColor=#808080; cornerRadius=5; fillColor=#ffff00; fillOpacity=0.1);
         @figure[applicationLayer.title](type=text; pos=1245,11; anchor=ne; text="application layer");
@@ -60,7 +61,11 @@ module MyUpf extends NetworkLayerNodeBase
             parameters:
                 @display("p=750,146;b=1000,5,,,,1");
         }
-        NWTT: MyNWTT {
+//        NWTT: MyNWTT {
+//            @display("p=998.514,374.166");
+//        }
+        ethInterface: MyLayeredEthernetInterface {
+            bitrate = default(1Gbps);
             @display("p=998.514,374.166");
         }
     connections:
@@ -69,11 +74,11 @@ module MyUpf extends NetworkLayerNodeBase
         gtp_user.socketIn <-- at.out++;
 
 
-        gtp_user.pppGate --> NWTT.in;
-        NWTT.out --> trafficFlowFilter.internetFilterGateIn;
-//        pppIf.upperLayerIn <-- NWTT.pppOut;
-//        NWTT.pppIn <-- pppIf.upperLayerOut;
-		NWTT.phys <--> filterGate;
+        gtp_user.pppGate --> ethInterface.upperLayerIn;
+        ethInterface.upperLayerOut --> trafficFlowFilter.internetFilterGateIn;
+        //        pppIf.upperLayerIn <-- NWTT.pppOut;
+        //        NWTT.pppIn <-- pppIf.upperLayerOut;
+        ethInterface.phys <--> filterGate;
         trafficFlowFilter.gtpUserGateOut --> gtp_user.trafficFlowFilterGate;
 
         // at dispatcher to transport layer connections
@@ -96,6 +101,4 @@ module MyUpf extends NetworkLayerNodeBase
 
         tn.out++ --> nl.in++;
         tn.in++ <-- nl.out++;
-
-//        pppIf.phys <--> filterGate;
 }

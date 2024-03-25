@@ -379,7 +379,6 @@ void MacForwardingTable::initializeTable()
 {
     clearTable();
     parseForwardingTableParameter();
-
     // Option to pre-read in Address Table. To turn it off, set forwardingTableFile to empty string
     const char *forwardingTableFile = par("forwardingTableFile");
     if (forwardingTableFile && *forwardingTableFile)

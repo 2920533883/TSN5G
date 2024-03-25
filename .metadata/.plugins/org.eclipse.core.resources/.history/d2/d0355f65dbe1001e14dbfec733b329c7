@@ -1,0 +1,127 @@
+[General]
+network = TrainTopology
+
+*.switch5.macTable.forwardingTableFile = "switch"
+
+*.server.ipv4.routingTable.routingFile = "server.mrt"
+*.*.dstt.destAddress = "server"
+*.*Ue[0].masterId = 0
+*.*Ue[0].nrMacCellId = 1
+*.*Ue[0].nrMasterId = 1
+*.*Ue[1].masterId = 0
+*.*Ue[1].nrMacCellId = 1
+*.*Ue[1].nrMasterId = 2
+*.*Ue[2].masterId = 0
+*.*Ue[2].nrMacCellId = 1
+*.*Ue[2].nrMasterId = 3
+*.*Ue[3].masterId = 0
+*.*Ue[3].nrMacCellId = 1
+*.*Ue[3].nrMasterId = 4
+
+
+############### CA configuration ################# 
+*.carrierAggregation.numComponentCarriers = 1
+*.carrierAggregation.componentCarrier[0].numerologyIndex = 0
+*.carrierAggregation.componentCarrier[0].carrierFrequency = 2GHz
+*.carrierAggregation.componentCarrier[0].numBands = 3
+
+*.gnb*.cellularNic.numCarriers = 1
+*.gnb*.cellularNic.channelModel[0].componentCarrierIndex = 0
+*.*Ue[*].cellularNic.numCarriers = 1
+*.*Ue[*].cellularNic.nrChannelModel[0].componentCarrierIndex = 0
+
+
+#**.dynamicCellAssociation = true
+#**.enableHandover = true
+#
+
+*.T*Client*.numApps = 1
+*.T*Client*.app[*].typename = "UdpApp"
+*.T*Client*.app[0].display-name = "besteffort"
+*.T*Client*.app[*].io.destAddress = "server"
+*.T*Client*.app[0].io.destPort = 1000
+*.T*Client*.app[0].io.localPort = 1000
+*.T*Client*.app[0].source.packetLength = 2B
+*.T*Client*.app[0].source.productionInterval = 50ms
+*.T*Client*.app[*].source.initialProductionOffset = 100ms
+
+
+*.B*Client*.numApps = 1
+*.B*Client*.app[*].typename = "UdpApp"
+*.B*Client*.app[0].display-name = "video"
+*.B*Client*.app[*].io.destAddress = "server"
+*.B*Client*.app[0].io.destPort = 1001
+*.B*Client*.app[0].io.localPort = 1000
+*.B*Client*.app[0].source.packetLength = 4B
+*.B*Client*.app[0].source.productionInterval = 60ms
+*.B*Client*.app[*].source.initialProductionOffset = 150ms
+
+*.HVACClient*.numApps = 1
+*.HVACClient*.app[*].typename = "UdpApp"
+*.HVACClient*.app[0].display-name = "video"
+*.HVACClient*.app[*].io.destAddress = "server"
+*.HVACClient*.app[0].io.destPort = 1001
+*.HVACClient*.app[0].io.localPort = 1000
+*.HVACClient*.app[0].source.packetLength = 4B
+*.HVACClient*.app[0].source.productionInterval = 60ms
+*.HVACClient*.app[*].source.initialProductionOffset = 200ms
+#
+*.server.numApps = 2
+*.server.app[*].typename = "UdpSinkApp"
+*.server.app[0].display-name = "besteffort"
+*.server.app[1].display-name = "video"
+*.server.app[0].io.localPort = 1000
+*.server.app[1].io.localPort = 1001
+
+
+*.*.hasOutgoingStreams = true
+*.*.hasIncomingStreams = true
+# client stream identification
+*.*Client*.bridging.streamIdentifier.identifier.mapping = [{stream: "besteffort", packetFilter: expr(has(udp) && udp.destPort == 1000)},
+															{stream: "video", packetFilter: expr(has(udp) && udp.destPort == 1001)}]
+
+# client stream encoding
+*.*Client*.bridging.streamCoder.encoder.mapping = [{stream: "besteffort", pcp: 0},
+													{stream: "video", pcp: 4}]
+
+*.server.bridging.streamIdentifier.identifier.mapping = [{stream: "besteffort", packetFilter: expr(has(udp) && udp.destPort == 1000)},
+															{stream: "video", packetFilter: expr(has(udp) && udp.destPort == 1001)}]
+
+*.server.bridging.streamCoder.encoder.mapping = [{stream: "besteffort", pcp: 0},
+													{stream: "video", pcp: 4}]
+
+
+*.switch*.bridging.streamIdentifier.identifier.mapping = [{stream: "besteffort", packetFilter: expr(has(udp) && udp.destPort == 1000)},
+															{stream: "video", packetFilter: expr(has(udp) && udp.destPort == 1001)}]
+
+*.switch*.bridging.streamCoder.encoder.mapping = [{stream: "besteffort", pcp: 0},
+													{stream: "video", pcp: 4}]
+
+*.switch*.bridging.streamCoder.decoder.mapping = [{pcp: 0, stream: "besteffort"},
+                                                 {pcp: 4, stream: "video"}]
+
+*.switch*.hasIngressTrafficFiltering = true
+#*.switch*.bridging.interfaceRelay.typename = "Ieee8021dRelay"
+*.switch*.bridging.streamFilter.ingress.typename = "SimpleIeee8021qFilter"
+*.switch*.bridging.streamFilter.ingress.numStreams = 2
+*.switch*.bridging.streamFilter.ingress.classifier.mapping = {besteffort: 0, video: 1}
+*.switch*.bridging.streamFilter.ingress.*[0].display-name = "besteffort"
+*.switch*.bridging.streamFilter.ingress.*[1].display-name = "video"
+*.switch*.bridging.streamFilter.ingress.meter[0..1].typename = "EligibilityTimeMeter"
+*.switch*.bridging.streamFilter.ingress.meter[*].committedInformationRate = 20Mbps
+*.switch*.bridging.streamFilter.ingress.meter[*].committedBurstSize = 10kB
+*.switch*.bridging.streamFilter.ingress.filter[0..1].typename = "EligibilityTimeFilter"
+
+
+
+# enable egress traffic shaping
+*.switch*.hasEgressTrafficShaping = true
+#*.switch*.bridging.directionReverser.reverser.excludeEncapsulationProtocols = ["ieee8021qctag"]
+
+*.switch*.eth[*].macLayer.queue.numTrafficClasses = 2
+*.switch*.eth[*].macLayer.queue.*[0].display-name = "besteffort"
+*.switch*.eth[*].macLayer.queue.*[1].display-name = "video"
+*.switch*.eth[*].macLayer.queue.queue[0..1].typename = "EligibilityTimeQueue"
+
+*.switch*.eth[*].macLayer.queue.transmissionSelectionAlgorithm[0..1].typename = "Ieee8021qAsynchronousShaper"
+

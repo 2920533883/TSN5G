@@ -54,6 +54,7 @@ void TSN5GTranslator::sendPacket(Packet *pkt)
         socket.setTos(tos);
     if (destAddress.isUnspecified())
         destAddress = L3AddressResolver().resolve(par("destAddress"));
+    EV << destAddress << endl;
     Packet* packet = new Packet();
     packet->insertAtBack(pkt->peekAll());
     socket.sendTo(packet, destAddress, destPort);
@@ -79,7 +80,6 @@ void TSN5GTranslator::handleMessage(cMessage *msg)
         pkt->removeTagIfPresent<DispatchProtocolReq>();
         auto eph = pkt->popAtFront<EthernetPhyHeader>();
         auto emh = pkt->popAtFront<EthernetMacHeader>();
-
         MacAddress* src = new MacAddress(srcMacAddress);
         const MacAddress& new_mac = *src;
         const auto& new_emh = makeShared<EthernetMacHeader>();

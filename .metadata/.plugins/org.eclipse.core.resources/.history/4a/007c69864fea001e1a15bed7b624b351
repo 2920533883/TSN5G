@@ -1,0 +1,7 @@
+<scenario>
+	<at t="60s">
+		<set-param module="switch1[1].macTable" par="forwardingTable" value="[{address:"0A-AA-00-00-00-01", interface:"eth1"}]"/>
+		<crash module="switch5"/>
+	</at>
+  
+</scenario>

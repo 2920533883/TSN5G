@@ -1,8 +1,8 @@
 version 3
-run General-0-20240227-09:34:46-3128
+run General-0-20240321-04:24:24-8122
 attr configname General
-attr datetime 20240227-09:34:46
-attr datetimef 20240227-093446
+attr datetime 20240321-04:24:24
+attr datetimef 20240321-042424
 attr experiment General
 attr inifile TSN5GPLUS.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network TSN5GPLUS
-attr processid 3128
+attr processid 8122
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -18,46 +18,26 @@ attr runnumber 0
 attr seedset 0
 config image-path ../inet4.5/images:../simu5G/images
 config network TSN5GPLUS
-config *.*.hasTimeSynchronization true
-config *.tsnClock.gptp.masterPorts "[\"eth0\"]"
-config *.tsnSwitch.gptp.masterPorts "[\"eth1\", \"eth2\"]"
-config **.referenceClock "\"tsnClock.clock\""
-config *.visualizer.typename IntegratedMultiCanvasVisualizer
-config *.visualizer.infoVisualizer[*].displayInfos true
-config *.visualizer.dataLinkVisualizer[0].displayLinks true
-config *.visualizer.dataLinkVisualizer[0].activityLevel "\"protocol\""
-config *.visualizer.dataLinkVisualizer[0].packetFilter "\"GptpSync\""
-config *.visualizer.dataLinkVisualizer[0].lineColor "\"blue2\""
-config *.visualizer.numInfoVisualizers 4
-config *.visualizer.infoVisualizer[0].modules "\"*.tsnClock.clock\""
-config *.tsnClock.clock.displayStringTextFormat "\"time: %T\""
-config *.visualizer.infoVisualizer[1].modules "\"*.tsnSwitch.clock\""
-config *.visualizer.infoVisualizer[1].placementHint "\"topLeft\""
-config *.visualizer.infoVisualizer[2].modules "\"*.tsnClient.clock\""
-config *.visualizer.infoVisualizer[2].placementHint "\"bottom\""
-config *.visualizer.infoVisualizer[3].modules "\"*.tsnServer.clock\""
-config *.visualizer.infoVisualizer[3].placementHint "\"bottom\""
-config *.tsnClient.clock.displayStringTextFormat "\"diff: %d\""
-config *.tsnServer.clock.displayStringTextFormat "\"diff: %d\""
-config *.tsnSwitch.clock.displayStringTextFormat "\"diff: %d\""
 config *.*.macCellId 1
 config *.*.masterId 1
 config *.*.nrMacCellId 1
 config *.*.nrMasterId 1
 config *.tsnClient*.numApps 2
-config *.tsnClient*.app[*].typename UdpApp
-config *.tsnClient*.app[0].display-name besteffort
-config *.tsnClient*.app[1].display-name video
-config *.tsnClient*.app[*].io.destAddress "\"tsnServer\""
-config *.tsnClient*.app[0].io.destPort 1000
-config *.tsnClient*.app[1].io.destPort 1001
-config *.tsnClient*.app[0].io.localPort 1000
-config *.tsnClient*.app[1].io.localPort 1001
-config *.tsnClient*.app[*].source.packetLength "1000B - 54B"
-config *.tsnClient*.app[0].source.productionInterval exponential(200us)
-config *.tsnClient*.app[1].source.productionInterval exponential(400us)
+config *.tsnClient*.app[*].typename UdpBasicApp
+config *.tsnClient*.app[0].packetName "\"besteffort\""
+config *.tsnClient*.app[1].packetName "\"video\""
+config *.tsnClient*.app[*].destAddresses "\"tsnServer\""
+config *.tsnClient*.app[0].destPort 1000
+config *.tsnClient*.app[1].destPort 1001
+config *.tsnClient*.app[0].localPort 1000
+config *.tsnClient*.app[1].localPort 1001
+config *.tsnClient*.app[*].messageLength 1B
+config *.tsnClient*.app[0].sendInterval exponential(200us)
+config *.tsnClient*.app[1].sendInterval exponential(400us)
+config *.tsnClient*.app[*].stopTime 1s
+config *.tsnClient*.app[*].startTime 0s
 config *.tsnServer.numApps 2
-config *.tsnServer.app[*].typename UdpEchoApp
+config *.tsnServer.app[*].typename UdpSink
 config *.tsnServer.app[0].display-name besteffort
 config *.tsnServer.app[1].display-name video
 config *.tsnServer.app[0].localPort 1000
@@ -142,157 +122,130 @@ attr recordingmode vector
 attr source "count(transmissionStarted) - count(transmissionEnded)"
 attr title "transmitting state"
 attr type int
-vector 9 TSN5GPLUS.tsnSwitch.eth[2].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+vector 9 TSN5GPLUS.upf.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 10 TSN5GPLUS.upf.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 11 TSN5GPLUS.upf.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 12 TSN5GPLUS.upf.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 13 TSN5GPLUS.upf.ethInterface.phyLayer.interFrameGapInserter interpacketGap:vector ETV
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
 attr title "interpacket gap state"
 attr type int
-vector 10 TSN5GPLUS.tsnSwitch.eth[2].phyLayer.transmitter transmitting:vector ETV
+vector 14 TSN5GPLUS.upf.ethInterface.phyLayer.transmitter transmitting:vector ETV
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source "count(transmissionStarted) - count(transmissionEnded)"
 attr title "transmitting state"
 attr type int
-vector 11 TSN5GPLUS.tsnClock.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
+vector 15 TSN5GPLUS.gnb.pppIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 16 TSN5GPLUS.gnb.pppMEHostIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 17 TSN5GPLUS.gnb.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 18 TSN5GPLUS.gnb.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 19 TSN5GPLUS.gnb.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 20 TSN5GPLUS.tsnClient.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
 attr title "interpacket gap state"
 attr type int
-vector 12 TSN5GPLUS.tsnClock.eth[0].phyLayer.transmitter transmitting:vector ETV
+vector 21 TSN5GPLUS.tsnClient.eth[0].phyLayer.transmitter transmitting:vector ETV
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source "count(transmissionStarted) - count(transmissionEnded)"
 attr title "transmitting state"
 attr type int
-vector 13 TSN5GPLUS.tsnClock.udp passedUpPk:vector(count) ETV
+vector 22 TSN5GPLUS.tsnClient.udp passedUpPk:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetSentToUpper
 attr title "packets passed up, count"
-vector 14 TSN5GPLUS.tsnClock.udp droppedPkWrongPort:vector(count) ETV
+vector 23 TSN5GPLUS.tsnClient.udp droppedPkWrongPort:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetDropReasonIsNoPortFound(packetDropped)
 attr title "packets dropped (wrong port), count"
-vector 15 TSN5GPLUS.tsnClock.udp droppedPkBadChecksum:vector(count) ETV
+vector 24 TSN5GPLUS.tsnClient.udp droppedPkBadChecksum:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-vector 16 TSN5GPLUS.upf.ppp[0].ppp transmissionState:vector ETV
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source transmissionStateChanged
-attr title "tx state"
-vector 17 TSN5GPLUS.upf.udp passedUpPk:vector(count) ETV
+vector 25 TSN5GPLUS.ue1.udp passedUpPk:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetSentToUpper
 attr title "packets passed up, count"
-vector 18 TSN5GPLUS.upf.udp droppedPkWrongPort:vector(count) ETV
+vector 26 TSN5GPLUS.ue1.udp droppedPkWrongPort:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetDropReasonIsNoPortFound(packetDropped)
 attr title "packets dropped (wrong port), count"
-vector 19 TSN5GPLUS.upf.udp droppedPkBadChecksum:vector(count) ETV
+vector 27 TSN5GPLUS.ue1.udp droppedPkBadChecksum:vector(count) ETV
 attr interpolationmode none
 attr recordingmode vector(count)
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-vector 20 TSN5GPLUS.gnb.pppIf.ppp transmissionState:vector ETV
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source transmissionStateChanged
-attr title "tx state"
-vector 21 TSN5GPLUS.gnb.pppMEHostIf.ppp transmissionState:vector ETV
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source transmissionStateChanged
-attr title "tx state"
-vector 22 TSN5GPLUS.gnb.udp passedUpPk:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetSentToUpper
-attr title "packets passed up, count"
-vector 23 TSN5GPLUS.gnb.udp droppedPkWrongPort:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-vector 24 TSN5GPLUS.gnb.udp droppedPkBadChecksum:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-vector 25 TSN5GPLUS.tsnClient.eth[0].phyLayer.interFrameGapInserter interpacketGap:vector ETV
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "count(interpacketGapStarted) - count(interpacketGapEnded)"
-attr title "interpacket gap state"
-attr type int
-vector 26 TSN5GPLUS.tsnClient.eth[0].phyLayer.transmitter transmitting:vector ETV
-attr interpolationmode sample-hold
-attr recordingmode vector
-attr source "count(transmissionStarted) - count(transmissionEnded)"
-attr title "transmitting state"
-attr type int
-vector 27 TSN5GPLUS.tsnClient.udp passedUpPk:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetSentToUpper
-attr title "packets passed up, count"
-vector 28 TSN5GPLUS.tsnClient.udp droppedPkWrongPort:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-vector 29 TSN5GPLUS.tsnClient.udp droppedPkBadChecksum:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-vector 30 TSN5GPLUS.ue1.udp passedUpPk:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetSentToUpper
-attr title "packets passed up, count"
-vector 31 TSN5GPLUS.ue1.udp droppedPkWrongPort:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-vector 32 TSN5GPLUS.ue1.udp droppedPkBadChecksum:vector(count) ETV
-attr interpolationmode none
-attr recordingmode vector(count)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-vector 33 TSN5GPLUS.ue1.cellularNic.phy servingCell:vector ETV
+vector 28 TSN5GPLUS.ue1.cellularNic.phy servingCell:vector ETV
 attr recordingmode vector
 attr source servingCell
 attr title "ID of the serving eNodeB for the UE"
 attr unit ""
-vector 34 TSN5GPLUS.ue1.cellularNic.nrPhy servingCell:vector ETV
+vector 29 TSN5GPLUS.ue1.cellularNic.nrPhy servingCell:vector ETV
 attr recordingmode vector
 attr source servingCell
 attr title "ID of the serving eNodeB for the UE"
 attr unit ""
-vector 35 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[0] numTokens:vector ETV
+vector 30 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[0] numTokens:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
 attr recordingmode vector
 attr source tokensChanged
 attr title "number of tokens"
 attr unit tk
-vector 36 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[1] numTokens:vector ETV
+vector 31 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.meter[1] numTokens:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.video
 attr recordingmode vector
 attr source tokensChanged
 attr title "number of tokens"
 attr unit tk
-vector 37 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
+vector 32 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
@@ -300,14 +253,14 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 38 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
+vector 33 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
 attr recordingmode vector
 attr source remainingEligibilityTimeChanged
 attr title "remaining eligibility time"
 attr unit s
-vector 39 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
+vector 34 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
@@ -315,14 +268,14 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 40 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
+vector 35 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
 attr recordingmode vector
 attr source remainingEligibilityTimeChanged
 attr title "remaining eligibility time"
 attr unit s
-vector 41 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
+vector 36 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
@@ -330,14 +283,14 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 42 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
+vector 37 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
 attr recordingmode vector
 attr source remainingEligibilityTimeChanged
 attr title "remaining eligibility time"
 attr unit s
-vector 43 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
+vector 38 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
@@ -345,66 +298,14 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 44 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
+vector 39 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
 attr interpolationmode linear
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
 attr recordingmode vector
 attr source remainingEligibilityTimeChanged
 attr title "remaining eligibility time"
 attr unit s
-vector 45 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector ETV
-attr enum CLOSED,OPEN
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.besteffort
-attr recordingmode vector
-attr source gateStateChanged
-attr title "gate state"
-attr type enum
-vector 46 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionSelectionAlgorithm[0] remainingEligibilityTime:vector ETV
-attr interpolationmode linear
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.besteffort
-attr recordingmode vector
-attr source remainingEligibilityTimeChanged
-attr title "remaining eligibility time"
-attr unit s
-vector 47 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionSelectionAlgorithm[1] gateState:vector ETV
-attr enum CLOSED,OPEN
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.video
-attr recordingmode vector
-attr source gateStateChanged
-attr title "gate state"
-attr type enum
-vector 48 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionSelectionAlgorithm[1] remainingEligibilityTime:vector ETV
-attr interpolationmode linear
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.video
-attr recordingmode vector
-attr source remainingEligibilityTimeChanged
-attr title "remaining eligibility time"
-attr unit s
-vector 49 TSN5GPLUS.tsnClient.app[0].source packetLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnClient.besteffort.source
-attr recordingmode vector
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
-vector 50 TSN5GPLUS.tsnClient.app[1].source packetLengths:vector ETV
-attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnClient.video.source
-attr recordingmode vector
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
-vector 51 TSN5GPLUS.tsnServer.clock timeChanged:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr title "Clock time"
-vector 52 TSN5GPLUS.tsnSwitch.clock timeChanged:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr title "Clock time"
-vector 53 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[0] gateState:vector ETV
+vector 40 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
@@ -412,7 +313,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 54 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[1] gateState:vector ETV
+vector 41 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.gate[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.video
@@ -420,7 +321,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 55 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] gateState:vector ETV
+vector 42 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
@@ -428,7 +329,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 56 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
+vector 43 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
 attr enum ON,OFF
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
@@ -436,7 +337,7 @@ attr recordingmode vector
 attr source guardBandStateChanged
 attr title "guard band state"
 attr type enum
-vector 57 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[1] gateState:vector ETV
+vector 44 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
@@ -444,7 +345,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 58 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
+vector 45 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
 attr enum ON,OFF
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
@@ -452,7 +353,7 @@ attr recordingmode vector
 attr source guardBandStateChanged
 attr title "guard band state"
 attr type enum
-vector 59 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] gateState:vector ETV
+vector 46 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
@@ -460,7 +361,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 60 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
+vector 47 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
 attr enum ON,OFF
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
@@ -468,7 +369,7 @@ attr recordingmode vector
 attr source guardBandStateChanged
 attr title "guard band state"
 attr type enum
-vector 61 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[1] gateState:vector ETV
+vector 48 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[1] gateState:vector ETV
 attr enum CLOSED,OPEN
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
@@ -476,7 +377,7 @@ attr recordingmode vector
 attr source gateStateChanged
 attr title "gate state"
 attr type enum
-vector 62 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
+vector 49 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
 attr enum ON,OFF
 attr interpolationmode sample-hold
 attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
@@ -484,64 +385,179 @@ attr recordingmode vector
 attr source guardBandStateChanged
 attr title "guard band state"
 attr type enum
-vector 63 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionGate[0] gateState:vector ETV
-attr enum CLOSED,OPEN
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.besteffort
-attr recordingmode vector
-attr source gateStateChanged
-attr title "gate state"
-attr type enum
-vector 64 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionGate[0] guardBandState:vector ETV
-attr enum ON,OFF
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.besteffort
-attr recordingmode vector
-attr source guardBandStateChanged
-attr title "guard band state"
-attr type enum
-vector 65 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionGate[1] gateState:vector ETV
-attr enum CLOSED,OPEN
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.video
-attr recordingmode vector
-attr source gateStateChanged
-attr title "gate state"
-attr type enum
-vector 66 TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.transmissionGate[1] guardBandState:vector ETV
-attr enum ON,OFF
-attr interpolationmode sample-hold
-attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[2].macLayer.queue.video
-attr recordingmode vector
-attr source guardBandStateChanged
-attr title "guard band state"
-attr type enum
-vector 67 TSN5GPLUS.tsnClock.clock timeChanged:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr title "Clock time"
-vector 68 TSN5GPLUS.tsnClient.clock timeChanged:vector ETV
-attr interpolationmode linear
-attr recordingmode vector
-attr title "Clock time"
-vector 69 TSN5GPLUS.tsnClient.app[0].io packetSent:vector(packetBytes) ETV
+vector 50 TSN5GPLUS.tsnClient.app[0] packetSent:vector(packetBytes) ETV
 attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnClient.besteffort.io
 attr recordingmode vector(packetBytes)
 attr source packetSent
 attr title "packets sent, packetBytes"
-vector 70 TSN5GPLUS.tsnClient.app[1].io packetSent:vector(packetBytes) ETV
+vector 51 TSN5GPLUS.tsnClient.app[1] packetSent:vector(packetBytes) ETV
 attr interpolationmode none
-attr moduledisplaypath TSN5GPLUS.tsnClient.video.io
 attr recordingmode vector(packetBytes)
 attr source packetSent
 attr title "packets sent, packetBytes"
-vector 71 TSN5GPLUS.tsnServer.bridging.streamIdentifier.identifier incomingPacketLengths:vector ETV
+vector 52 TSN5GPLUS.tsnClient.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 53 TSN5GPLUS.tsnClient.bridging.streamIdentifier.identifier incomingPacketLengths:vector ETV
 attr interpolationmode none
 attr recordingmode vector
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
 attr title "incoming packet lengths"
 attr unit b
+vector 54 TSN5GPLUS.tsnClient.bridging.streamIdentifier.identifier outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+vector 55 TSN5GPLUS.tsnClient.bridging.streamCoder.encoder incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+vector 56 TSN5GPLUS.tsnClient.bridging.streamCoder.encoder outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+vector 57 TSN5GPLUS.tsnClient.ieee8021q.qTagHeaderInserter incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+vector 58 TSN5GPLUS.tsnClient.ieee8021q.qTagHeaderInserter outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+vector 59 TSN5GPLUS.tsnClient.ethernet.macHeaderInserter incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+vector 60 TSN5GPLUS.tsnClient.ethernet.macHeaderInserter outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+vector 61 TSN5GPLUS.tsnClient.ethernet.paddingInserter incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+vector 62 TSN5GPLUS.tsnClient.ethernet.paddingInserter outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+vector 63 TSN5GPLUS.tsnClient.ethernet.fcsInserter incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+vector 64 TSN5GPLUS.tsnClient.ethernet.fcsInserter outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+vector 65 TSN5GPLUS.tsnClient.eth[0].macLayer.queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 66 TSN5GPLUS.tsnClient.eth[0].macLayer.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 67 TSN5GPLUS.tsnClient.eth[0].macLayer.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 68 TSN5GPLUS.tsnClient.eth[0].macLayer.queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 69 TSN5GPLUS.tsnClient.eth[0].macLayer.queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 70 TSN5GPLUS.tsnClient.eth[0].macLayer.server incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths"
+attr unit b
+vector 71 TSN5GPLUS.tsnClient.eth[0].macLayer.server outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths"
+attr unit b
+vector 72 TSN5GPLUS.tsnClient.eth[0].macLayer.outboundEmitter incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+vector 73 TSN5GPLUS.tsnClient.eth[0].macLayer.outboundEmitter outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+vector 74 TSN5GPLUS.tsnClient.eth[0].phyLayer.phyHeaderInserter incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+vector 75 TSN5GPLUS.tsnClient.eth[0].phyLayer.phyHeaderInserter outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+vector 76 TSN5GPLUS.tsnClient.eth[0].phyLayer.outboundEmitter incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+vector 77 TSN5GPLUS.tsnClient.eth[0].phyLayer.outboundEmitter outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+vector 78 TSN5GPLUS.tsnClient.eth[0].phyLayer.transmitter transmissionTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetDuration(transmissionEnded)
+attr title "transmission time"
+attr unit s
 0	0	0	0
 0	0	0	0
 1	0	0	0
@@ -558,14 +574,12 @@ attr unit b
 8	0	0	0
 8	0	0	0
 9	0	0	0
-9	0	0	0
-10	0	0	0
 10	0	0	0
 11	0	0	0
-11	0	0	0
-12	0	0	0
 12	0	0	0
 13	0	0	0
+13	0	0	0
+14	0	0	0
 14	0	0	0
 15	0	0	0
 16	0	0	0
@@ -573,63 +587,604 @@ attr unit b
 18	0	0	0
 19	0	0	0
 20	0	0	0
+20	0	0	0
+20	29	0.00000576	1
 21	0	0	0
+21	0	0	0
+21	28	0	1
+21	29	0.00000576	0
 22	0	0	0
 23	0	0	0
 24	0	0	0
 25	0	0	0
-25	0	0	0
-26	0	0	0
 26	0	0	0
 27	0	0	0
-28	0	0	0
-29	0	0	0
-30	0	0	0
-31	0	0	0
-32	0	0	0
-33	0	0	1
+28	0	0	1
+29	0	0	1
+30	0	0	80000
+31	0	0	80000
+32	0	0	1
+32	0	0	1
+33	0	0	0
 34	0	0	1
-35	0	0	80000
-36	0	0	80000
-37	0	0	1
-37	0	0	1
-38	0	0	0
-39	0	0	1
-39	0	0	1
-40	0	0	0
+34	0	0	1
+35	0	0	0
+36	0	0	1
+36	0	0	1
+37	0	0	0
+38	0	0	1
+38	0	0	1
+39	0	0	0
+40	0	0	1
 41	0	0	1
-41	0	0	1
-42	0	0	0
-43	0	0	1
-43	0	0	1
-44	0	0	0
-45	0	0	1
-45	0	0	1
-46	0	0	0
-47	0	0	1
-47	0	0	1
-48	0	0	0
-49	0	0	7568
-50	0	0	7568
-51	0	0	0
-52	0	0	0
-53	0	0	1
-54	0	0	1
-55	0	0	1
-56	0	0	0
-57	0	0	1
-58	0	0	0
-59	0	0	1
-60	0	0	0
-61	0	0	1
-62	0	0	0
-63	0	0	1
-64	0	0	0
-65	0	0	1
-66	0	0	0
-67	0	0	0
-68	0	0	0
-69	13	0	946
-70	14	0	946
-71	26	0	432
+42	0	0	1
+43	0	0	0
+44	0	0	1
+45	0	0	0
+46	0	0	1
+47	0	0	0
+48	0	0	1
+49	0	0	0
+50	14	0	1
+51	15	0	1
+52	21	0	9
+52	23	0	9
+53	26	0	232
+53	27	0	232
+54	26	0	232
+54	27	0	232
+55	26	0	232
+55	27	0	232
+56	26	0	232
+56	27	0	232
+57	26	0	232
+57	27	0	232
+58	26	0	264
+58	27	0	264
+59	26	0	264
+59	27	0	264
+60	26	0	376
+60	27	0	376
+61	26	0	376
+61	27	0	376
+62	26	0	480
+62	27	0	480
+63	26	0	480
+63	27	0	480
+64	26	0	512
+64	27	0	512
+65	26	0	512
+65	27	0	512
+66	26	0	1
+66	27	0	2
+66	28	0	1
+67	26	0	512
+67	27	0	1024
+67	28	0	512
+68	28	0	0
+69	28	0	512
+70	28	0	512
+71	28	0	512
+72	28	0	512
+73	28	0	512
+74	28	0	512
+75	28	0	576
+76	28	0	576
+77	28	0	576
+78	29	0.00000576	5.76e-06
+vector 79 TSN5GPLUS.tsnServer.ethernet.macHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 80 TSN5GPLUS.tsnServer.ethernet.fcsChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 81 TSN5GPLUS.tsnServer.ieee8021q.qTagHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 82 TSN5GPLUS.tsnServer.eth[0].macLayer.queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 83 TSN5GPLUS.tsnServer.eth[0].macLayer.queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 84 TSN5GPLUS.tsnServer.eth[0].macLayer.server incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "incoming datarate"
+attr unit bps
+vector 85 TSN5GPLUS.tsnServer.eth[0].macLayer.server outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "outgoing datarate"
+attr unit bps
+vector 86 TSN5GPLUS.tsnServer.eth[0].macLayer.fcsChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 87 TSN5GPLUS.tsnServer.eth[0].phyLayer.transmitter throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+vector 88 TSN5GPLUS.tsnServer.eth[0].phyLayer.phyHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 89 TSN5GPLUS.tsnServer.eth[0].phyLayer.receiver throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(receptionEnded)
+attr title throughput
+attr unit bps
+vector 90 TSN5GPLUS.tsnServer.app[0] throughput:vector ETV
+attr moduledisplaypath TSN5GPLUS.tsnServer.besteffort
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 91 TSN5GPLUS.tsnServer.app[1] throughput:vector ETV
+attr moduledisplaypath TSN5GPLUS.tsnServer.video
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 92 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.classifier dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 93 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.filter[0] droppedDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.besteffort
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 94 TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.filter[1] droppedDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.bridging.streamFilter.ingress.video
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 95 TSN5GPLUS.tsnSwitch.ethernet.macHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 96 TSN5GPLUS.tsnSwitch.ethernet.fcsChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 97 TSN5GPLUS.tsnSwitch.ieee8021q.qTagHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 98 TSN5GPLUS.tsnSwitch.ieee8021r.rTagHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 99 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.classifier dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 100 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.queue[0] outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 101 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.queue[0] incomingDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.besteffort
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 102 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.queue[1] outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 103 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.queue[1] incomingDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.video
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 104 TSN5GPLUS.tsnSwitch.eth[0].macLayer.queue.transmissionSelection dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "data rate"
+attr unit bps
+vector 105 TSN5GPLUS.tsnSwitch.eth[0].macLayer.server incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "incoming datarate"
+attr unit bps
+vector 106 TSN5GPLUS.tsnSwitch.eth[0].macLayer.server outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "outgoing datarate"
+attr unit bps
+vector 107 TSN5GPLUS.tsnSwitch.eth[0].macLayer.fcsChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 108 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.transmitter throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+vector 109 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.phyHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 110 TSN5GPLUS.tsnSwitch.eth[0].phyLayer.receiver throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(receptionEnded)
+attr title throughput
+attr unit bps
+vector 111 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.classifier dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 112 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.queue[0] outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 113 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.queue[0] incomingDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.besteffort
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 114 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.queue[1] outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 115 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.queue[1] incomingDataRate:vector ETV
+attr interpolationmode linear
+attr moduledisplaypath TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.video
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 116 TSN5GPLUS.tsnSwitch.eth[1].macLayer.queue.transmissionSelection dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "data rate"
+attr unit bps
+vector 117 TSN5GPLUS.tsnSwitch.eth[1].macLayer.server incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "incoming datarate"
+attr unit bps
+vector 118 TSN5GPLUS.tsnSwitch.eth[1].macLayer.server outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "outgoing datarate"
+attr unit bps
+vector 119 TSN5GPLUS.tsnSwitch.eth[1].macLayer.fcsChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 120 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.transmitter throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+vector 121 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.phyHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 122 TSN5GPLUS.tsnSwitch.eth[1].phyLayer.receiver throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(receptionEnded)
+attr title throughput
+attr unit bps
+vector 123 TSN5GPLUS.upf.ppp[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 124 TSN5GPLUS.upf.ppp[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 125 TSN5GPLUS.upf.ethInterface.macLayer.queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 126 TSN5GPLUS.upf.ethInterface.macLayer.queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 127 TSN5GPLUS.upf.ethInterface.macLayer.server incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "incoming datarate"
+attr unit bps
+vector 128 TSN5GPLUS.upf.ethInterface.macLayer.server outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "outgoing datarate"
+attr unit bps
+vector 129 TSN5GPLUS.upf.ethInterface.macLayer.fcsChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 130 TSN5GPLUS.upf.ethInterface.phyLayer.transmitter throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+vector 131 TSN5GPLUS.upf.ethInterface.phyLayer.phyHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 132 TSN5GPLUS.upf.ethInterface.phyLayer.receiver throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(receptionEnded)
+attr title throughput
+attr unit bps
+vector 133 TSN5GPLUS.gnb.pppIf.queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 134 TSN5GPLUS.gnb.pppIf.queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 135 TSN5GPLUS.gnb.pppMEHostIf.queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 136 TSN5GPLUS.gnb.pppMEHostIf.queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 137 TSN5GPLUS.tsnClient.ethernet.macHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 138 TSN5GPLUS.tsnClient.ethernet.fcsChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 139 TSN5GPLUS.tsnClient.ieee8021q.qTagHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 140 TSN5GPLUS.tsnClient.eth[0].macLayer.queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 141 TSN5GPLUS.tsnClient.eth[0].macLayer.queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 142 TSN5GPLUS.tsnClient.eth[0].macLayer.server incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "incoming datarate"
+attr unit bps
+vector 143 TSN5GPLUS.tsnClient.eth[0].macLayer.server outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "outgoing datarate"
+attr unit bps
+vector 144 TSN5GPLUS.tsnClient.eth[0].macLayer.fcsChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 145 TSN5GPLUS.tsnClient.eth[0].phyLayer.transmitter throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+vector 146 TSN5GPLUS.tsnClient.eth[0].phyLayer.phyHeaderChecker droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 147 TSN5GPLUS.tsnClient.eth[0].phyLayer.receiver throughput:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(receptionEnded)
+attr title throughput
+attr unit bps
+vector 148 TSN5GPLUS.tsnClient.app[0] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 149 TSN5GPLUS.tsnClient.app[1] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+33	30	0.00000581	0
+35	30	0.00000581	0
+37	30	0.00000581	0
+39	30	0.00000581	0
+40	30	0.00000581	1
+41	30	0.00000581	1
+43	30	0.00000581	0
+45	30	0.00000581	0
+47	30	0.00000581	0
+49	30	0.00000581	0
+79	30	0.00000581	0
+80	30	0.00000581	0
+81	30	0.00000581	0
+82	30	0.00000581	0
+83	30	0.00000581	0
+84	30	0.00000581	0
+85	30	0.00000581	0
+86	30	0.00000581	0
+87	30	0.00000581	0
+88	30	0.00000581	0
+89	30	0.00000581	0
+90	30	0.00000581	0
+91	30	0.00000581	0
+92	30	0.00000581	0
+93	30	0.00000581	0
+94	30	0.00000581	0
+95	30	0.00000581	0
+96	30	0.00000581	0
+97	30	0.00000581	0
+98	30	0.00000581	0
+99	30	0.00000581	0
+100	30	0.00000581	0
+101	30	0.00000581	0
+102	30	0.00000581	0
+103	30	0.00000581	0
+104	30	0.00000581	0
+105	30	0.00000581	0
+106	30	0.00000581	0
+107	30	0.00000581	0
+108	30	0.00000581	0
+109	30	0.00000581	0
+110	30	0.00000581	0
+111	30	0.00000581	0
+112	30	0.00000581	0
+113	30	0.00000581	0
+114	30	0.00000581	0
+115	30	0.00000581	0
+116	30	0.00000581	0
+117	30	0.00000581	0
+118	30	0.00000581	0
+119	30	0.00000581	0
+120	30	0.00000581	0
+121	30	0.00000581	0
+122	30	0.00000581	0
+123	30	0.00000581	0
+124	30	0.00000581	0
+125	30	0.00000581	0
+126	30	0.00000581	0
+127	30	0.00000581	0
+128	30	0.00000581	0
+129	30	0.00000581	0
+130	30	0.00000581	0
+131	30	0.00000581	0
+132	30	0.00000581	0
+133	30	0.00000581	0
+134	30	0.00000581	0
+135	30	0.00000581	0
+136	30	0.00000581	0
+137	30	0.00000581	0
+138	30	0.00000581	0
+139	30	0.00000581	0
+140	30	0.00000581	88123924.268503
+141	30	0.00000581	176247848.53701
+142	30	0.00000581	88123924.268503
+143	30	0.00000581	88123924.268503
+144	30	0.00000581	0
+145	30	0.00000581	99139414.802065
+146	30	0.00000581	0
+147	30	0.00000581	0
+148	30	0.00000581	0
+149	30	0.00000581	0
 
