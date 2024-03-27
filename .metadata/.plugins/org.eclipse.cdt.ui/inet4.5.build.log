@@ -1,4 +1,4 @@
-03:53:55 **** Incremental Build of configuration release for project inet4.5 ****
+06:53:03 **** Incremental Build of configuration release for project inet4.5 ****
 make MODE=release -j2 all 
 make[1]: Entering directory '/home/simu5g/simu5g-workspace/inet4.5/src'
 *** CCACHE not detected - using precompiled headers
@@ -10,17 +10,17 @@ Building...
 inet/linklayer/ethernet/common/MacForwardingTable.cc
 inet/protocolelement/redundancy/StreamIdentifier.cc
 fatal error: file '/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/string' has been modified since the precompiled header 'inet/common/precompiled_release.h.pch' was built: mtime changed
+note: please rebuild precompiled header 'inet/common/precompiled_release.h.pch'
 fatal error: file '/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/string' has been modified since the precompiled header 'inet/common/precompiled_release.h.pch' was built: mtime changed
 note: please rebuild precompiled header 'inet/common/precompiled_release.h.pch'
-note: please rebuild precompiled header 'inet/common/precompiled_release.h.pch'
 1 error generated.
-1 error generated.
-make[1]: *** [Makefile:1863: ../out/clang-release/src/inet/linklayer/ethernet/common/MacForwardingTable.o] Error 1
-make[1]: *** Waiting for unfinished jobs....
 make[1]: *** [Makefile:1863: ../out/clang-release/src/inet/protocolelement/redundancy/StreamIdentifier.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
+1 error generated.
 make[1]: Leaving directory '/home/simu5g/simu5g-workspace/inet4.5/src'
+make[1]: *** [Makefile:1863: ../out/clang-release/src/inet/linklayer/ethernet/common/MacForwardingTable.o] Error 1
 make: *** [Makefile:7: all] Error 2
 "make MODE=release -j2 all" terminated with exit code 2. Build might be incomplete.
 
-03:54:03 Build Failed. 4 errors, 0 warnings. (took 7s.66ms)
+06:53:06 Build Failed. 4 errors, 0 warnings. (took 2s.920ms)
 

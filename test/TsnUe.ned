@@ -33,16 +33,16 @@ import inet.applications.pingapp.PingApp;
 module TsnUe extends NRUe
 {
     parameters:
-		mobility.typename="";
+
     gates:
         inout phys;
     submodules:
-        dstt: TSN5GTranslator {
+        DSTT: DSTTInterface{
             @display("p=575,65");
         }
     connections allowunconnected:
-        dstt.phys <--> phys;
-		dstt.out --> at.in++;
-		dstt.in <-- at.out++;
+        DSTT.phys <--> phys;
+		DSTT.upperLayerOut --> at.in++;
+		DSTT.upperLayerIn <-- at.out++;
 
 }

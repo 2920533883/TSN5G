@@ -1,6 +1,6 @@
-03:54:06 **** Incremental Build of configuration release for project test ****
+06:53:08 **** Incremental Build of configuration release for project test ****
 make MODE=release all 
 make: Nothing to be done for 'all'.
 
-03:54:07 Build Finished. 0 errors, 0 warnings. (took 655ms)
+06:53:09 Build Finished. 0 errors, 0 warnings. (took 947ms)
 

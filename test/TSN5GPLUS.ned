@@ -55,6 +55,7 @@ network TSN5GPLUS extends TsnNetworkBase
             @display("p=985.26996,334.62");
         }
         upf: MyUpf {
+            NWTT.bitrate = 100Mbps;
             @display("p=682.76,251.81");
         }
         gnb: gNodeB {
@@ -64,14 +65,13 @@ network TSN5GPLUS extends TsnNetworkBase
             @display("p=415.74,550.94");
         }
         ue1: TsnUe {
+            DSTT.bitrate = 100Mbps;
             @display("p=415.74,312.65");
         }
 
     connections:
         tsnClient.ethg++ <--> Eth100M <--> ue1.phys;
-
         tsnSwitch.ethg++ <--> Eth100M <--> tsnServer.ethg++;
-        
         upf.filterGate <--> Eth100M <--> tsnSwitch.ethg++;
         upf.pppg++ <--> Eth100M <--> gnb.ppp;
 }

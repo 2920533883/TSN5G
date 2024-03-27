@@ -29,7 +29,7 @@ network TrainTopology
         int numTCU = 8;
         // zhi dong
         int numBCU = 8;
-        **.eth[*].bitrate = default(1Gbps);
+        **.bitrate = default(1Gbps);
 
     submodules:
         scenarioManager: ScenarioManager {
@@ -52,91 +52,87 @@ network TrainTopology
             @display("p=176,200;is=s");
         }
         server: TsnDevice {
-            @display("p=1483.82,52.39");
+            @display("p=800,52.39");
         }
         switch1: TsnSwitch {
-            @display("p=716.56,197.73");
+            @display("p=500,197.73");
         }
         switch2: TsnSwitch {
-            @display("p=1213.4199,197.73");
+            @display("p=700,197.73");
         }
         switch3: TsnSwitch {
-            @display("p=1799.85,197.73");
+            @display("p=900,197.73");
         }
         switch4: TsnSwitch {
-            @display("p=2386.28,197.73");
+            @display("p=1100,197.73");
         }
         switch5: TsnSwitch {
-            @display("p=968.37,128.44");
+            @display("p=600,128.44");
         }
         switch6: TsnSwitch {
-            @display("p=2063.49,128.44");
+            @display("p=1000,128.44");
         }
         upf1: MyUpf {
-            @display("p=626.99,282.22998;is=s");
+            @display("p=600,270;is=s");
         }
         upf2: MyUpf {
-            @display("p=626,282;is=s");
+            @display("p=600,270;is=s");
         }
         upf3: MyUpf {
-            @display("p=2386,272;is=s");
+            @display("p=1000,270;is=s");
         }
         upf4: MyUpf {
-            @display("p=2386.28,272.09;is=s");
+            @display("p=1000,270;is=s");
         }
         gnb1: gNodeB {
             gateway = "upf1";
-            @display("p=600,400");
         }
 
         gnb2: gNodeB {
             gateway = "upf2";
-            @display("p=1200,400");
         }
         gnb3: gNodeB {
             gateway = "upf3";
-            @display("p=1800,400");
         }
         gnb4: gNodeB {
             gateway = "upf4";
-            @display("p=2400,400");
         }
         HVACClient[numHVAC]: TsnDevice {
 
-            @display("i=device/card;p=450,450,r,300;is=s;");
+            @display("i=device/card;p=450,450,r,100;is=s;");
         }
         HVACUe[numHVAC]: TsnUe {
-            @display("i=device/card;p=450,450,r,300;is=s;");
+            @display("i=device/card;is=s;");
         }
         BCClient[numBC]: TsnDevice {
-            @display("i=device/card;p=450,500,r,300;is=s;");
+            @display("i=device/card;p=450,500,r,100;is=s;");
         }
         BCUe[numBC]: TsnUe {
-            @display("i=device/card;p=450,500,r,300;is=s;");
+            @display("i=device/card;is=s;");
         }
         TCUClient[numTCU]: TsnDevice {
-            @display("i=device/card;p=450,550,r,300;is=s;");
+            @display("i=device/card;p=450,550,r,100;is=s;");
         }
         TCUUe[numTCU]: TsnUe {
-            @display("i=device/card;p=450,550,r,300;is=s;");
+            @display("i=device/card;is=s;");
         }
         BCUClient[numBCU]: TsnDevice {
-            @display("i=device/device;p=450,600,r,300;is=s;");
+            @display("i=device/device;p=450,600,r,100;is=s;");
         }
         BCUUe[numBCU]: TsnUe {
-            @display("i=device/device;p=450,600,r,300;is=s;");
+            @display("i=device/device;is=s;");
         }
         PISClient[numPIS]: TsnDevice {
-            @display("i=device/device;p=450,650,r,300;is=s;");
+            @display("i=device/device;p=450,650,r,100;is=s;");
         }
         PISUe[numPIS]: TsnUe {
-            @display("i=device/device;p=450,650,r,300;is=s;");
+            @display("i=device/device;is=s;");
         }
         DCUClient[numDCU]: TsnDevice {
-            @display("i=device/device;p=450,700,r,300;is=s;");
+            @display("i=device/device;p=450,700,r,100;is=s;");
         }
         DCUUe[numDCU]: TsnUe {
-            @display("i=device/device;p=450,700,r,300;is=s;");
+            @display("i=device/device;is=s;");
         }
     connections:
         for i=0..numHVAC-1 {
@@ -173,9 +169,8 @@ network TrainTopology
         gnb2.ppp <--> Eth1G {  length = 200m; } <--> upf2.pppg++;
         gnb3.ppp <--> Eth1G {  length = 200m; } <--> upf3.pppg++;
         gnb4.ppp <--> Eth1G {  length = 1m; } <--> upf4.pppg++;
-        //        gnb3.ppp <--> Eth1G <--> upf2.pppg++;
-        //        gnb4.ppp <--> Eth1G <--> upf2.pppg++;
         switch5.ethg++ <--> Eth1G {  length = 100m; } <--> server.ethg++;
         switch6.ethg++ <--> Eth1G {  length = 400m; } <--> server.ethg++;
+
 
 }

@@ -61,11 +61,8 @@ parameters:
             parameters:
                 @display("p=750,146;b=1000,5,,,,1");
         }
-//        NWTT: MyNWTT {
-//            @display("p=998.514,374.166");
-//        }
-        ethInterface: MyLayeredEthernetInterface {
-            bitrate = default(1Gbps);
+
+        NWTT: NWTTInterface {
             @display("p=998.514,374.166");
         }
     connections:
@@ -74,11 +71,9 @@ parameters:
         gtp_user.socketIn <-- at.out++;
 
 
-        gtp_user.pppGate --> ethInterface.upperLayerIn;
-        ethInterface.upperLayerOut --> trafficFlowFilter.internetFilterGateIn;
-        //        pppIf.upperLayerIn <-- NWTT.pppOut;
-        //        NWTT.pppIn <-- pppIf.upperLayerOut;
-        ethInterface.phys <--> filterGate;
+        gtp_user.pppGate --> NWTT.upperLayerIn;
+        NWTT.upperLayerOut --> trafficFlowFilter.internetFilterGateIn;
+        NWTT.phys <--> filterGate;
         trafficFlowFilter.gtpUserGateOut --> gtp_user.trafficFlowFilterGate;
 
         // at dispatcher to transport layer connections

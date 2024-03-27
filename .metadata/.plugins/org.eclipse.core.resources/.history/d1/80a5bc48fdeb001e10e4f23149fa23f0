@@ -1,0 +1,176 @@
+package train_topology;
+import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
+import inet.networklayer.ipv4.RoutingTableRecorder;
+import simu5g.common.binder.Binder;
+import simu5g.world.radio.LteChannelControl;
+import simu5g.common.carrierAggregation.CarrierAggregation;
+import simu5g.nodes.Upf;
+import simu5g.nodes.NR.gNodeB;
+import simu5g.nodes.NR.NRUe;
+import inet.node.tsn.*;
+import inet.node.ethernet.*;
+import inet.node.inet.Router;
+import inet.node.inet.StandardHost;
+import inet.networks.base.TsnNetworkBase;
+import *;
+import inet.common.scenario.ScenarioManager;
+network TrainTopology
+{
+    parameters:
+        // kong tiao
+        int numHVAC = 8;
+        // men kong
+        int numDCU = 8;
+        // dianchi
+        int numBC = 8;
+        // che xiang
+        int numPIS = 8;
+        // qian yin
+        int numTCU = 8;
+        // zhi dong
+        int numBCU = 8;
+        **.bitrate = default(1Gbps);
+
+    submodules:
+        scenarioManager: ScenarioManager {
+            @display("p=74.36,398.84");
+        }
+        carrierAggregation: CarrierAggregation {
+            @display("p=100,27;is=s");
+        }
+        channelControl: LteChannelControl {
+            @display("p=196,27;is=s");
+        }
+        configurator: Ipv4NetworkConfigurator {
+            parameters:
+                @display("p=100,300;is=s");
+        }
+        routingRecorder: RoutingTableRecorder {
+            @display("p=176,88;is=s");
+        }
+        binder: Binder {
+            @display("p=176,200;is=s");
+        }
+        server: TsnDevice {
+            @display("p=1483.82,52.39");
+        }
+        switch1: TsnSwitch {
+            @display("p=500,197.73");
+        }
+        switch2: TsnSwitch {
+            @display("p=700,197.73");
+        }
+        switch3: TsnSwitch {
+            @display("p=900,197.73");
+        }
+        switch4: TsnSwitch {
+            @display("p=1100,197.73");
+        }
+        switch5: TsnSwitch {
+            @display("p=600,128.44");
+        }
+        switch6: TsnSwitch {
+            @display("p=1000,128.44");
+        }
+        upf1: MyUpf {
+            @display("p=600,270;is=s");
+        }
+        upf2: MyUpf {
+            @display("p=600,270;is=s");
+        }
+        upf3: MyUpf {
+            @display("p=1000,270;is=s");
+        }
+        upf4: MyUpf {
+            @display("p=1000,270;is=s");
+        }
+        gnb1: gNodeB {
+            gateway = "upf1";
+        }
+
+        gnb2: gNodeB {
+            gateway = "upf2";
+        }
+        gnb3: gNodeB {
+            gateway = "upf3";
+        }
+        gnb4: gNodeB {
+            gateway = "upf4";
+        }
+        HVACClient[numHVAC]: TsnDevice {
+
+            @display("i=device/card;p=450,450,r,100;is=s;");
+        }
+        HVACUe[numHVAC]: TsnUe {
+            @display("i=device/card;is=s;");
+        }
+        BCClient[numBC]: TsnDevice {
+            @display("i=device/card;p=450,500,r,100;is=s;");
+        }
+        BCUe[numBC]: TsnUe {
+            @display("i=device/card;is=s;");
+        }
+        TCUClient[numTCU]: TsnDevice {
+            @display("i=device/card;p=450,550,r,100;is=s;");
+        }
+        TCUUe[numTCU]: TsnUe {
+            @display("i=device/card;is=s;");
+        }
+        BCUClient[numBCU]: TsnDevice {
+            @display("i=device/device;p=450,600,r,100;is=s;");
+        }
+        BCUUe[numBCU]: TsnUe {
+            @display("i=device/device;is=s;");
+        }
+        PISClient[numPIS]: TsnDevice {
+            @display("i=device/device;p=450,650,r,100;is=s;");
+        }
+        PISUe[numPIS]: TsnUe {
+            @display("i=device/device;is=s;");
+        }
+        DCUClient[numDCU]: TsnDevice {
+            @display("i=device/device;p=450,700,r,100;is=s;");
+        }
+        DCUUe[numDCU]: TsnUe {
+            @display("i=device/device;is=s;");
+        }
+    connections:
+        for i=0..numHVAC-1 {
+            HVACClient[i].ethg++ <--> Eth1G <--> HVACUe[i].phys;
+        }
+        for i=0..numBC-1 {
+            BCClient[i].ethg++ <--> Eth1G <--> BCUe[i].phys;
+        }
+        for i=0..numDCU-1 {
+            DCUClient[i].ethg++ <--> Eth1G <--> DCUUe[i].phys;
+        }
+        for i=0..numPIS-1 {
+            PISClient[i].ethg++ <--> Eth1G <--> PISUe[i].phys;
+        }
+        for i=0..numTCU-1 {
+            TCUClient[i].ethg++ <--> Eth1G <--> TCUUe[i].phys;
+        }
+        for i=0..numBCU-1 {
+            BCUClient[i].ethg++ <--> Eth1G <--> BCUUe[i].phys;
+        }
+
+        switch1.ethg++ <--> Eth1G {  length = 1m; } <--> upf1.filterGate;
+        switch2.ethg++ <--> Eth1G {  length = 200m; } <--> upf2.filterGate;
+        switch3.ethg++ <--> Eth1G {  length = 200m; } <--> upf3.filterGate;
+        switch4.ethg++ <--> Eth1G {  length = 1m; } <--> upf4.filterGate;
+        switch1.ethg++ <--> Eth1G {  length = 100m; } <--> switch5.ethg++;
+        switch2.ethg++ <--> Eth1G {  length = 100m; } <--> switch5.ethg++;
+        switch3.ethg++ <--> Eth1G {  length = 100m; } <--> switch6.ethg++;
+        switch4.ethg++ <--> Eth1G {  length = 100m; } <--> switch6.ethg++;
+        switch1.ethg++ <--> Eth1G {  length = 150m; } <--> switch2.ethg++;
+        switch2.ethg++ <--> Eth1G {  length = 100m; } <--> switch3.ethg++;
+        switch3.ethg++ <--> Eth1G {  length = 150m; } <--> switch4.ethg++;
+        gnb1.ppp <--> Eth1G {  length = 1m; } <--> upf1.pppg++;
+        gnb2.ppp <--> Eth1G {  length = 200m; } <--> upf2.pppg++;
+        gnb3.ppp <--> Eth1G {  length = 200m; } <--> upf3.pppg++;
+        gnb4.ppp <--> Eth1G {  length = 1m; } <--> upf4.pppg++;
+        switch5.ethg++ <--> Eth1G {  length = 100m; } <--> server.ethg++;
+        switch6.ethg++ <--> Eth1G {  length = 400m; } <--> server.ethg++;
+
+
+}
